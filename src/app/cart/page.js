@@ -158,10 +158,12 @@ const Cart = () => {
     [userId, removeFromCart]
   );
 
-  useEffect(() => {
-    localStorage.setItem("cep", cep);
-  }, [cep]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cep", cep);
+    }
+  }, [cep]);
   useEffect(() => {
     const fetchFrete = async () => {
       try {
@@ -180,7 +182,7 @@ const Cart = () => {
   }, [cep, userId]);
 
   useEffect(() => {
-    if (frete && frete.length > 0) {
+    if (typeof window !== "undefined" && frete && frete.length > 0) {
       setSelectedFreteIndex(
         +localStorage.getItem("selectedFreteIndex") || null
       );
