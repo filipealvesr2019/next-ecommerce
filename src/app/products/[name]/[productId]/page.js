@@ -532,7 +532,7 @@ const ProductDetails = ({params}) => {
  console.log("canonicalUrl", canonicalUrl)
   return (
     <>
-      <div className={styles.ProductDetailsContainer}>
+     <div className={styles.ProductDetailsContainer}>
         <ToastContainer
           position="top-center"
           autoClose={5000}
@@ -598,7 +598,7 @@ const ProductDetails = ({params}) => {
                 </div>
 
                 <div className={styles.CartB}>
-                  <CartSidebar />
+                  <CartB />
                 </div>
               </div>
             </div>
@@ -685,7 +685,7 @@ const ProductDetails = ({params}) => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <ZoomIn selectedImageUrl={selectedImageUrl} s />
+                  <ZoomIn selectedImageUrl={selectedImageUrl} />
                   <div style={{ position: "absolute", cursor: "pointer" }}>
                     <KeyboardArrowLeftIcon
                       onClick={handlePrevClick}

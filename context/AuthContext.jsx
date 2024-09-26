@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }) => {
     setLoggedIn(false);
     setIsCustomer(false);
     setUserId(null); // Resetando o ID do usuário ao fazer logout
-    navigate('/login');
+    // navigate('/login');
 
   };
 
