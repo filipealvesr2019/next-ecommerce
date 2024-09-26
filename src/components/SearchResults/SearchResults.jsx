@@ -5,7 +5,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
 import Header from "./Header";
-import IconToggle from "./IconToggle";
+// import IconToggle from "./IconToggle";
 import styles from "./SearchResults.module.css"
 import colorMap from "./colorMap";
 import Navbar from "./Navbar";
@@ -406,7 +406,7 @@ const removeAccents = (name) => {
                         className={styles.Link}
                       >
                         <div className={styles.IconToggle}>
-                        <IconToggle productId={product._id} />
+                        {/* <IconToggle productId={product._id} /> */}
 
                         </div>
                         <img

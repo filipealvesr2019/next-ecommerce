@@ -10,7 +10,7 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import axios from "axios";
 import CustomPagination from "@/components/Categories/Pagination/CustomPagination";
 import Header from "@/components/Header/Header";
-import IconToggle from "@/components/IconToggle/IconToggle";
+// import IconToggle from "@/components/IconToggle/IconToggle";
 import Navbar from "@/components/Navbar/Navbar";
 import ProductList from "@/components/ProductList/ProductList";
 import { useConfig } from "../../../../context/ConfigContext";
@@ -599,10 +599,10 @@ const removeAccents = (name) => {
                               justifyContent: "center",
                             }}
                           >
-                            <IconToggle
+                            {/* <IconToggle
                               productId={product._id}
                               isFavorite={favorites[product._id]}
-                            />
+                            /> */}
                           </div>
                         </li>
                       </>
