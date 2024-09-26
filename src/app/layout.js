@@ -1,5 +1,9 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import { ConfigProvider } from "../../context/ConfigContext";
+import { CartProvider } from "../../context/CartContext";
+import { AuthProvider } from "../../context/AuthContext";
+import { UnreadProvider } from "../../context/UnreadContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,9 +24,19 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
+      <CartProvider>
+        <ConfigProvider>
+          <AuthProvider>
+            <UnreadProvider>
+
+          <body className={`${geistSans.variable} ${geistMono.variable}`}>
+            {children}
+          </body>
+
+            </UnreadProvider>
+          </AuthProvider>
+        </ConfigProvider>
+      </CartProvider>
     </html>
   );
 }

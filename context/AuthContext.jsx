@@ -1,9 +1,9 @@
+"use client"
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
 import { useConfig } from './ConfigContext';
 
 const AuthContext = createContext();
