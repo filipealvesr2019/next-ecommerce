@@ -3,14 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 5001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^6.1.1",
+    "axios": "^1.7.7",
+    "next": "14.2.13",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.13"
+    "react-ga": "^3.3.1"
   }
 }
