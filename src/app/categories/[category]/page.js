@@ -14,6 +14,8 @@ import IconToggle from "@/components/IconToggle/IconToggle";
 import Navbar from "@/components/Navbar/Navbar";
 import ProductList from "@/components/ProductList/ProductList";
 import { useConfig } from "../../../../context/ConfigContext";
+import CategorySubcategoriesSkeleton from "@/components/Skeletons/CategorySubcategoriesSkeleton";
+import Link from "next/link";
 // export const metadata = {
 //     title: 'Home - Loja Mediewal', // Define o título da página
 //     description: 'Veja as últimas novidades em nossa loja, com uma seleção de produtos novos.', // Descrição da página
@@ -524,7 +526,7 @@ const removeAccents = (name) => {
                           className={styles.ProductsContainer__li}
                         >
                           <Link
-                            to={{
+                            href={{
                               pathname: `/products/${removeAccents(product.name)}/${product._id}`,
                               search: `?${queryParams.toString()}`,
                             }}
