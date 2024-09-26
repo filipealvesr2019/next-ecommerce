@@ -1,4 +1,3 @@
-// context/ConfigContext.jsx
 "use client"; // Adicione isso no topo do arquivo
 import React, { createContext, useContext, useState } from 'react';
 

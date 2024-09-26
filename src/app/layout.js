@@ -10,6 +10,7 @@ const geistSans = localFont({
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -24,19 +25,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <CartProvider>
-        <ConfigProvider>
-          <AuthProvider>
-            <UnreadProvider>
-
-          <body className={`${geistSans.variable} ${geistMono.variable}`}>
-            {children}
-          </body>
-
-            </UnreadProvider>
-          </AuthProvider>
-        </ConfigProvider>
-      </CartProvider>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <CartProvider>
+          <ConfigProvider>
+            <AuthProvider>
+              <UnreadProvider>
+                {children} {/* Renderização do conteúdo filho aqui */}
+              </UnreadProvider>
+            </AuthProvider>
+          </ConfigProvider>
+        </CartProvider>
+      </body>
     </html>
   );
 }

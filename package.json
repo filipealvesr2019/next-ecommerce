@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 5001",
+    "dev": "next dev -p 5012",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -16,8 +16,8 @@
     "axios": "^1.7.7",
     "js-cookie": "^3.0.5",
     "next": "14.2.13",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-ga": "^3.3.1",
     "react-heart": "^1.0.6",
     "react-toastify": "^10.0.5"

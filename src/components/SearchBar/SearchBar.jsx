@@ -1,3 +1,5 @@
+'use client'; // Adicione isso se este arquivo também precisar ser um Client Component
+
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './SearchBar.module.css';
@@ -24,7 +26,7 @@ const SearchBar = () => {
         placeholder="Digite o nome do produto"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        onKeyDown={handleKeyPress} // Adiciona o event listener para capturar a tecla pressionada
+        onKeyDown={handleKeyPress}
         className={styles.inputContainer}
       />
       <img

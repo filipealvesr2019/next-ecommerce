@@ -13,28 +13,27 @@ import Header from "@/components/Header/Header";
 // import NewArrivals from "./NewArrivals";
 // import Footer from "./Footer";
 export const metadata = {
-  title: 'Home - Loja Mediewal', // Define o título da página
-  description: 'Veja as últimas novidades em nossa loja, com uma seleção de produtos novos.', // Descrição da página
+  title: "Home - Loja Mediewal", // Define o título da página
+  description:
+    "Veja as últimas novidades em nossa loja, com uma seleção de produtos novos.", // Descrição da página
   icons: {
-    icon: '/favicon.svg', // Define o favicon
+    icon: "/favicon.svg", // Define o favicon
   },
 };
 
 export default function Home() {
-  
   return (
-   
-    <div >
-       <ConfigProvider>
-       <Header />
+    <div>
+      <ConfigProvider>
+        <Header />
 
-<Navbar />
-<Slider />
+        <Navbar />
+        <Slider />
 
-<Categories />
-<CategoryCarousel />
-    </ConfigProvider>
-{/* 
+        <Categories />
+        <CategoryCarousel />
+      </ConfigProvider>
+      {/* 
 
       <div style={{ display: "flex", marginTop: "3rem", flexDirection: "column" }}>
         <NewArrivals />
