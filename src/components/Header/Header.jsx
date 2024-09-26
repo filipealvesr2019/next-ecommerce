@@ -312,6 +312,7 @@ const Header = () => {
                 <Link href={"/favoritos"}>
                   <img src="https://i.ibb.co/2ZnFQfq/heart-1.png" alt="" />
                 </Link>
+                
                 <Link
                   href={"/cart"}
                   style={{
