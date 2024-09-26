@@ -5,7 +5,6 @@ import styles from "./CategoriesMobile.module.css";
 import Navbar from "./Navbar";
 import { useConfig } from "../context/ConfigContext";
 import { logPageView } from "../../analytics";
-import { Helmet } from "react-helmet";
 
 const CategoriesDesktop = () => {
   const [categories, setCategories] = useState([]);
@@ -49,7 +48,7 @@ const CategoriesDesktop = () => {
       }}
       className={styles.ImageGalleryDesktop}
     >
-       {location.pathname === "/categorias" && (
+       {/* {location.pathname === "/categorias" && (
         <Helmet>
           <title>Categorias - Loja Mediewal</title>
           <meta
@@ -57,7 +56,7 @@ const CategoriesDesktop = () => {
             content="Veja as últimas novidades em nossa loja, com uma seleção de produtos novos."
           />
         </Helmet>
-      )}
+      )} */}
       <ImageGalleryDesktop />
 
       <Navbar />

@@ -4,7 +4,6 @@ import ImageGalleryMobile from "./ImageGalleryMobile";
 import styles from "./CategoriesMobile.module.css";
 import Navbar from "./Navbar";
 import { useConfig } from "../context/ConfigContext";
-import { Helmet } from "react-helmet";
 
 const CategoriesMobile = () => {
   const [categories, setCategories] = useState([]);

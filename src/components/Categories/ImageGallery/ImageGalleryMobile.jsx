@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useConfig } from "../context/ConfigContext";
-import { Helmet } from "react-helmet";
 
 const ImageGalleryMobile = () => {
   const [categories, setCategories] = useState([]);
@@ -36,7 +35,7 @@ const ImageGalleryMobile = () => {
 
   return (
     <div style={{ position: "relative" }}>
-       {location.pathname === "/categorias" && (
+       {/* {location.pathname === "/categorias" && (
         <Helmet>
           <title>Categorias - Loja Mediewal</title>
           <meta
@@ -44,7 +43,7 @@ const ImageGalleryMobile = () => {
             content="Veja as últimas novidades em nossa loja, com uma seleção de produtos novos."
           />
         </Helmet>
-      )}
+      )} */}
       <h2 style={{ marginLeft: "2rem" }}>Categorias</h2>
       <div
         style={{
