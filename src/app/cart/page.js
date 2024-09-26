@@ -35,10 +35,13 @@ const Cart = () => {
   const [getTotal, setGetTotal] = useState({});
   
   const [selectedFreteIndex, setSelectedFreteIndex] = useState(
-    localStorage.getItem("selectedFreteIndex") || null
+    typeof window !== "undefined" ? localStorage.getItem("selectedFreteIndex") : null
   );
   const userId = Cookies.get("userId"); // Obtenha o token do cookie
-  const [cep, setCep] = useState(localStorage.getItem("cep") || "");
+  const [cep, setCep] = useState(
+    typeof window !== "undefined" ? localStorage.getItem("cep") : ""
+  );
+
   const [frete, setFrete] = useState(null);
   const credentials = Cookies.get("role"); // Obtenha as credenciais do cookie
   const token = Cookies.get("token"); // Obtenha o token do cookie
