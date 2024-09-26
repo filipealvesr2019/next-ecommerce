@@ -18,6 +18,7 @@ import AlertComponente from "../AlertComponente/AlertComponente";
 import { useUnreadCount } from "../../../context/UnreadContext";
 import { useConfig } from "../../../context/ConfigContext";
 import { useCart } from "../../../context/CartContext";
+import Link from "next/link";
 const Header = () => {
   const { cartItemCount, addToCart, removeFromCart } = useCart();
   const [localCartItemCount, setLocalCartItemCount] = useState(0);
@@ -143,7 +144,7 @@ const Header = () => {
             
             <div className={styles.child}>
               <i>
-                <Link to={"/"}>
+                <Link href={"/"}>
                   <img
                     src="https://i.ibb.co/B3xYDzG/Logo-mediewal-1.png"
                     alt="Logo da Mediewal"
@@ -189,7 +190,7 @@ const Header = () => {
                           <ul style={{ listStyleType: "none" }}>
                             <li className={styles.li}>
                               <Link
-                                to={"/perfil"}
+                                href={"/perfil"}
                                 style={{ textDecoration: "none" }}
                               >
                                 <a
@@ -204,7 +205,7 @@ const Header = () => {
                             </li>
                             <li className={styles.li}>
                               <Link
-                                to={"/orders"}
+                                href={"/orders"}
                                 style={{ textDecoration: "none" }}
                               >
                                 <a style={{ color: "rgb(108, 117, 125)" }}>
@@ -214,7 +215,7 @@ const Header = () => {
                             </li>
                             <li className={styles.li}>
                               <Link
-                                to={"/forgotPassword"}
+                                href={"/forgotPassword"}
                                 style={{ textDecoration: "none" }}
                               >
                                 <a style={{ color: "rgb(108, 117, 125)" }}>
@@ -299,7 +300,7 @@ const Header = () => {
                 </div>
 
                 <div className={styles.IconsContainer}>
-                <Link to={loggedIn === true ? " " : "/perfil"}>
+                <Link href={loggedIn === true ? " " : "/perfil"}>
                   {" "}
                   <img
                     src="https://i.ibb.co/L1tX6LY/user-2.png"
@@ -308,11 +309,11 @@ const Header = () => {
                   />
                 </Link>
 
-                <Link to={"/favoritos"}>
+                <Link href={"/favoritos"}>
                   <img src="https://i.ibb.co/2ZnFQfq/heart-1.png" alt="" />
                 </Link>
                 <Link
-                  to={"/cart"}
+                  href={"/cart"}
                   style={{
                     position: "relative",
                     display: "inline-block",
@@ -372,7 +373,7 @@ const Header = () => {
       <div className={styles.MobileHeader__Container}>
             <div>
               <i>
-                <Link to={"/"}>
+                <Link href={"/"}>
                   <img
                     src="https://i.ibb.co/B3xYDzG/Logo-mediewal-1.png"
                     alt="Logo da Mediewal"
@@ -404,7 +405,7 @@ const Header = () => {
 
  
               <Link
-                to={"/favoritos"}
+                href={"/favoritos"}
                 style={{
                   cursor: "pointer",
                   color: "white",
@@ -414,7 +415,7 @@ const Header = () => {
               </Link>
 
               <Link
-                to={"/cart"}
+                href={"/cart"}
                 style={{
                   position: "relative",
                   display: "inline-block",
