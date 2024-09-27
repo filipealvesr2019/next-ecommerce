@@ -1,10 +1,10 @@
 "use client"; // Adicione isso no topo do arquivo
 import React, { createContext, useContext, useState } from 'react';
 
-const localhost = 'http://localhost:3001';
-const prodURL = 'https://serveradmin-whhj.onrender.com';
 
 export const ConfigContext = createContext();
+const localhost = 'http://localhost:3001';
+const prodURL = 'https://serveradmin-whhj.onrender.com';
 
 export const ConfigProvider = ({ children }) => {
   const [apiUrl, setApiUrl] = useState(process.env.NEXT_PUBLIC_API_URL || localhost);

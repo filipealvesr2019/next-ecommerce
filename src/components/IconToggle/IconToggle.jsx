@@ -1,6 +1,5 @@
 import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
-import Heart from "react-heart";
 import { useAuth } from "../../../context/AuthContext";
 import { useConfig } from "../../../context/ConfigContext";
 const IconToggle = ({ productId, isFavorite }) => {
@@ -11,7 +10,10 @@ const IconToggle = ({ productId, isFavorite }) => {
 
   const token = Cookies.get('token'); // Obtenha o token do cookie
   const { apiUrl } = useConfig();
-
+  const [heartClick, setHeartClick] = useState()
+  const handleHeartClick = () => {
+    setHeartClick(!heartClick)
+  }
   useEffect(() => {
     setActive(isFavorite);
   }, [isFavorite]);
@@ -63,14 +65,15 @@ const IconToggle = ({ productId, isFavorite }) => {
   return (
     <div>
       <div style={{ width: "2rem"}}>
-        <Heart
-          isActive={active}
-          onClick={handleClick}
-          animationScale={1.25}
-          inactiveColor="#ccc" // Cor cinza quando inativo
-          activeColor="red" // Cor vermelha quando ativo
-          style={{ marginBottom: '1rem', Zindex: "99999" }}
-        />
+    
+         <div onClick={handleHeartClick}>  {heartClick ? <FavoriteIcon sx={{
+        color:"red"
+      }}   isActive={active}
+      onClick={handleClick}
+      animationScale={1.25}
+      inactiveColor="#ccc" // Cor cinza quando inativo
+      activeColor="red" // Cor vermelha quando ativo
+      style={{ marginBottom: '1rem', Zindex: "99999" }}/> : <FavoriteBorderIcon />}</div>
       </div>
     </div>
   );

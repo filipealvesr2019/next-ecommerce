@@ -25,10 +25,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 // };
 
 export default function Home() {
-  const [heartClick, setHeartClick] = useState()
-const handleHeartClick = () => {
-  setHeartClick(!heartClick)
-}
+ 
   return (
     <div>
       <ConfigProvider>
@@ -42,9 +39,7 @@ const handleHeartClick = () => {
       </ConfigProvider>
      
 
-      <div onClick={handleHeartClick}>  {heartClick ? <FavoriteIcon sx={{
-        color:"red"
-      }}/> : <FavoriteBorderIcon />}</div>
+     
     </div>
   );
 }
