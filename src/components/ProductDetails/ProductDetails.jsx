@@ -18,7 +18,6 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CloseIcon from "@mui/icons-material/Close";
-import { logPageView } from "../../analytics";
 
 import { useAuth } from "../../../context/AuthContext";
 import FreteSelect from "../Frete/FreteSelect";

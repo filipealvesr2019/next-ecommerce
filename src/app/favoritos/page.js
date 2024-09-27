@@ -52,11 +52,11 @@ const removeAccents = (name) => {
 
   return (
     <div className={styles.HeartContainer}>
-              <ConfigProvider>
+   
 
 
       <Header />
-              </ConfigProvider>
+         
 
       <Navbar />
       {/* <Helmet>
