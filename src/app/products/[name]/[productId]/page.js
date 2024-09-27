@@ -27,11 +27,15 @@ export async function generateMetadata({ params }) {
   } catch (error) {
     console.error('Erro ao obter detalhes do produto:', error);
   }
+ 
+    const canonicalUrl = `http://localhost:5012/products/${name}/${productId}`; // Substitua pela URL canônica correta
 
   return {
     title: productData ? productData.name : "Produto não encontrado",
     description: productData ? productData.description : "Descrição padrão do produto",
-  
+    alternates: {
+      canonical: canonicalUrl, // Adicionando a tag canônica
+    },
   };
 }
 
