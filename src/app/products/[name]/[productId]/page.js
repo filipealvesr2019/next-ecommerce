@@ -1,5 +1,7 @@
 import axios from 'axios';
 import styles from './ProductDetails.module.css'
+import ProductDetailsButton from '@/components/ProductDetailsButton/ProductDetailsButton';
+import ProductDetails from '@/components/ProductDetails/ProductDetails';
 // Função para obter os dados do produto
 const getProductData = async (name, productId, token, apiUrl) => {
   const encodedProductName = encodeURIComponent(name);
@@ -57,11 +59,12 @@ const ProductPage = async ({ params }) => {
     <div>
       {productData ? (
         <>
-  
+{/*   
           <h1>{productData.name}</h1>
           <h2>{productData.description}</h2>
-          <img src={productData.variations[0]?.urls[0]} alt={productData.name} />
+          <img src={productData.variations[0]?.urls[0]} alt={productData.name} /> */}
           {/* Renderize as variações e tamanhos conforme necessário */}
+          <ProductDetails productId={productId} name={name}/>
         </>
       ) : (
         <h1>Produto não encontrado</h1>

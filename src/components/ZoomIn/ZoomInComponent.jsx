@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import "./Application.css"
+import "./ZoomIn.css"
 const ZoomIn = ({selectedImageUrl}) => {
   const [state, setState] = useState({
     isZoomOnSide: true,
