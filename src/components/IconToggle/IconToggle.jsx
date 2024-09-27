@@ -2,6 +2,8 @@ import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { useConfig } from "../../../context/ConfigContext";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 const IconToggle = ({ productId, isFavorite }) => {
   const [active, setActive] = useState(isFavorite ?? false);
   const userId = Cookies.get('userId'); // Obtenha o token do cookie
