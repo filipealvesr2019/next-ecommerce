@@ -7,7 +7,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { useAuth } from "../../../context/AuthContext";
 import { useConfig } from "../../../context/ConfigContext";
 
-const cartSidebar = () => {
+const CartSidebar = () => {
   const [getCart, setGetCart] = useState([]);
   const [getTotal, setGetTotal] = useState({});
   const [totalQuantity, setTotalQuantity] = useState({});
@@ -444,4 +444,4 @@ const cartSidebar = () => {
   );
 };
 
-export default cartSidebar;
+export default CartSidebar;

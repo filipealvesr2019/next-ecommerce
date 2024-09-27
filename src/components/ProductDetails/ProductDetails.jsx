@@ -26,6 +26,7 @@ import { useConfig } from "../../../context/ConfigContext";
 import Header from "../Header/Header";
 import Navbar from "../Navbar/Navbar";
 import ZoomInComponent from '../ZoomIn/ZoomInComponent'
+import CartSidebar from "../cartSidebar/CartSidebar";
 const ProductDetails = ({productId, name}) => {
   const [product, setProduct] = useState({ variations: [] });
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -597,7 +598,7 @@ const ProductDetails = ({productId, name}) => {
                 </div>
 
                 <div className={styles.CartB}>
-                  <CartB />
+                  <CartSidebar />
                 </div>
               </div>
             </div>

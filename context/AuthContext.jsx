@@ -4,6 +4,8 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+
 import { useConfig } from './ConfigContext';
 
 const AuthContext = createContext();
@@ -49,7 +51,7 @@ export const AuthProvider = ({ children }) => {
       if (error.response && error.response.status === 401) {
         const { remainingAttempts } = error.response.data;
         setRemainingAttempts(remainingAttempts); // Atualize aqui em caso de erro
-        toast.error('Erro, email ou senha inválidos!', { position: toast.POSITION.TOP_CENTER });
+        toast.error('Erro, email ou senha inválidos!', { position: 'top-center' });
       } else {
         console.error('Erro na solicitação de login', error);
       }
