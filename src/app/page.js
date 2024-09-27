@@ -6,6 +6,8 @@ import { ConfigProvider } from "../../context/ConfigContext";
 import Categories from "@/components/Categories/Categories";
 import CategoryCarousel from "@/components/CategoryCarousel/CategoryCarousel";
 import Header from "@/components/Header/Header";
+import NewArrivals from "@/components/NewArrivals/NewArrivals";
+import Footer from "@/components/Footer/Footer";
 
 
 export const metadata = {
@@ -29,6 +31,13 @@ export default function Home() {
 
         <Categories />
         <CategoryCarousel />
+        <div
+        style={{ display: "flex", marginTop: "3rem", flexDirection: "column" }}
+      >
+        <NewArrivals />{" "}
+      </div>
+
+      <Footer />
       </ConfigProvider>
      
 
