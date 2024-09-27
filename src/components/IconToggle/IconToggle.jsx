@@ -1,54 +1,53 @@
+"use client";
 import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { useConfig } from "../../../context/ConfigContext";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+
 const IconToggle = ({ productId, isFavorite }) => {
   const [active, setActive] = useState(isFavorite ?? false);
-  const userId = Cookies.get('userId'); // Obtenha o token do cookie
-  const { logout, loggedIn } = useAuth(); // Obtendo o userId do contexto de autenticação
-  const credentials = Cookies.get('role'); // Obtenha as credenciais do cookie
-
-  const token = Cookies.get('token'); // Obtenha o token do cookie
+  const userId = Cookies.get("userId");
+  const { logout, loggedIn } = useAuth();
+  const credentials = Cookies.get("role");
+  const token = Cookies.get("token");
   const { apiUrl } = useConfig();
-  const [heartClick, setHeartClick] = useState()
-  const handleHeartClick = () => {
-    setHeartClick(!heartClick)
-  }
+
   useEffect(() => {
-    setActive(isFavorite);
-  }, [isFavorite]);
+    const storedActive = localStorage.getItem(`favorite_${productId}`);
+    if (storedActive !== null) {
+      setActive(storedActive === "true");
+    } else {
+      setActive(isFavorite); // Atualiza o estado inicial com base em `isFavorite`
+    }
+  }, [productId, isFavorite]);
 
   const handleClick = async () => {
     try {
-      // Verificar se o usuário está autenticado
-      if (!loggedIn || !userId ) {
-        console.error('Usuário não autenticado.');
+      if (!loggedIn || !userId) {
+        console.error("Usuário não autenticado.");
         return;
       }
 
-      // Enviar uma requisição POST para adicionar/remover o produto dos favoritos
-      const response = await fetch(
-        `${apiUrl}/api/favorites`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-            Credentials: credentials,
-          },
-          body: JSON.stringify({
-            custumerId: userId,
-            productId: productId,
-          }),
-        }
-      );
+      const response = await fetch(`${apiUrl}/api/favorites`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+          Credentials: credentials,
+        },
+        body: JSON.stringify({
+          custumerId: userId,
+          productId: productId,
+        }),
+      });
 
       if (response.ok) {
         const data = await response.json();
-        setActive(!active); // Alterar o estado active para o oposto do valor atual
-        localStorage.setItem(`favorite_${productId}`, !active);
+        const newActive = !active; // Muda o estado após a resposta
+        setActive(newActive);
+        localStorage.setItem(`favorite_${productId}`, newActive.toString());
       } else {
         console.error("Erro ao adicionar/remover produto dos favoritos");
       }
@@ -57,26 +56,17 @@ const IconToggle = ({ productId, isFavorite }) => {
     }
   };
 
-  useEffect(() => {
-    const storedActive = localStorage.getItem(`favorite_${productId}`);
-    if (storedActive !== null) {
-      setActive(storedActive === "true");
-    }
-  }, [productId]);
-
   return (
-    <div>
-      <div style={{ width: "2rem"}}>
-    
-         <div onClick={handleHeartClick}>  {heartClick ? <FavoriteIcon sx={{
-        color:"red"
-      }}   isActive={active}
-      onClick={handleClick}
-      animationScale={1.25}
-      inactiveColor="#ccc" // Cor cinza quando inativo
-      activeColor="red" // Cor vermelha quando ativo
-      style={{ marginBottom: '1rem', Zindex: "99999" }}/> : <FavoriteBorderIcon />}</div>
-      </div>
+    <div style={{ width: "2rem", cursor: "pointer" }} onClick={handleClick}>
+      {active ? (
+        <FavoriteIcon
+          style={{ color: "red", marginBottom: "1rem", zIndex: "99999" }}
+        />
+      ) : (
+        <FavoriteBorderIcon
+          style={{ color: "#ccc", marginBottom: "1rem", zIndex: "99999" }}
+        />
+      )}
     </div>
   );
 };
