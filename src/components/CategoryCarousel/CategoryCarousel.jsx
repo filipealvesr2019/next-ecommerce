@@ -94,7 +94,7 @@ const CategoryCarousel = () => {
           categoryName,
           subcategoryName
         );
-        router.push(`/categories/${encodeURIComponent(categoryName)}/${encodeURIComponent(subcategoryName)}/products`);
+        router.push(`/categories/${encodeURIComponent(categoryName)}`);
       }
       setLoading(false); // Define loading como falso após obter os dados
     } catch (error) {
