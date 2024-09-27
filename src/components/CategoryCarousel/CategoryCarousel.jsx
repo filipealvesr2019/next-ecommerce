@@ -86,7 +86,7 @@ const CategoryCarousel = () => {
       if (subcategories && subcategories.length > 0) {
         console.log("Navigating to category subcategories:", categoryName);
         router.push(
-          `/categories/${encodeURIComponent(categoryName)}/subcategories`
+          `/categories/${encodeURIComponent(categoryName)}`
         );
       } else {
         console.log(
