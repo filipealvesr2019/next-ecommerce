@@ -69,7 +69,7 @@ export async function generateMetadata({ params }) {
       
     default:
       return {
-        title: category,
+        title: 'Loja Mediewal',
         description: "Somos a Mediewal, uma marca de roupas masculinas criada para quem quer se vestir bem e reinar no estilo. Inspirada no conceito de elegância  e confiança.",
         alternates: {
           canonical: canonicalUrl,
