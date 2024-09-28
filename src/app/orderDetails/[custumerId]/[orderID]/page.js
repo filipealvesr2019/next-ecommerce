@@ -11,14 +11,16 @@ import QRCODE from "@/components/QRCODE/QRCode";
 import CircularIndeterminate from "@/components/CircularIndeterminate/CircularIndeterminate";
 import { useConfig } from "../../../../../context/ConfigContext";
 import { useAuth } from "../../../../../context/AuthContext";
+import Link from "next/link";
 
 const AllOrderDetails = ({params}) => {
+    const { orderID } = params; // Extracting query from URL
+
   const userId = Cookies.get("userId");
   const { logout, loggedIn } = useAuth();
   const [boletos, setBoletos] = useState([]);
   const [pix, setPix] = useState([]);
   const [creditCard, setCreditCard] = useState([]);
-  const { id } = params; // Certifique-se de que o parâmetro corresponde ao nome na URL
 
   const [payload, setPayload] = useState(false);
 
@@ -34,13 +36,13 @@ const AllOrderDetails = ({params}) => {
       [panel]: newExpanded ? panel : false,
     }));
   };
-
+console.log(orderID)
   useEffect(() => {
     setLoading(true); // Define o estado de carregamento como true antes de fazer a chamada à API
 
     if (loggedIn) {
       axios
-        .get(`${apiUrl}/api/allOrders/${userId}/${id}`,
+        .get(`${apiUrl}/api/allOrders/${userId}/${orderID}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -199,7 +201,7 @@ const removeAccents = (name) => {
               {order.status === "PENDING" ? (
 
                 <div className={styles.boletoContainer__buttonContainer}>
-                  <Link to={order.bankSlipUrl} style={{ textDecoration: "none" }}>
+                  <Link href={order.bankSlipUrl} style={{ textDecoration: "none" }}>
                     {" "}
                     <button className={styles.boletoContainer__button}>Pagar boleto</button>{" "}
                   </Link>
@@ -223,7 +225,7 @@ const removeAccents = (name) => {
               <div>
                 {order.products.map((product, prodIndex) => (
                   <>
-                    <Link to={`/products/${removeAccents(product.name)}/${product.productId}`} style={{ textDecoration: "none", color: "inherit" }}>
+                    <Link href={`/products/${removeAccents(product.name)}/${product.productId}`} style={{ textDecoration: "none", color: "inherit" }}>
                       <div key={prodIndex} className={styles.boletoContainer__card}>
                         <img
                           src={product.image}
@@ -371,7 +373,7 @@ const removeAccents = (name) => {
                 <div>
                   {order.products.map((product, prodIndex) => (
                     <>
-                      <Link to={`/products/${removeAccents(product.name)}/${product.productId}`} style={{ textDecoration: "none", color: "inherit" }}>
+                      <Link href={`/products/${removeAccents(product.name)}/${product.productId}`} style={{ textDecoration: "none", color: "inherit" }}>
 
                         <div key={prodIndex} className={styles.boletoContainer__card}>
                           <img
@@ -483,7 +485,7 @@ const removeAccents = (name) => {
               {order.status === "PENDING" ? (
 
                 <div className={styles.boletoContainer__buttonContainer}>
-                  <Link to={order.invoiceUrl} style={{ textDecoration: "none" }}>
+                  <Link href={order.invoiceUrl} style={{ textDecoration: "none" }}>
                     {" "}
                     <button className={styles.boletoContainer__button}>Pagar agora</button>{" "}
                   </Link>
@@ -507,7 +509,7 @@ const removeAccents = (name) => {
               <div>
                 {order.products.map((product, prodIndex) => (
                   <>
-                    <Link to={`/products/${removeAccents(product.name)}/${product.productId}`} style={{ textDecoration: "none", color: "inherit" }}>
+                    <Link href={`/products/${removeAccents(product.name)}/${product.productId}`} style={{ textDecoration: "none", color: "inherit" }}>
                       <div key={prodIndex} className={styles.boletoContainer__card}>
                         <img
                           src={product.image}
