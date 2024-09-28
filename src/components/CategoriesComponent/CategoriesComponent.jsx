@@ -876,7 +876,7 @@ const removeAccents = (name) => {
                               }}
                               onClick={() => {
                                 handleColorClick(color);
-                                handleSelectBorder(index);
+                                // handleSelectBorder(index);
                               }}
                             >
                               <div
@@ -1113,7 +1113,7 @@ const removeAccents = (name) => {
                     className={styles.colorContainer}
                     onClick={() => {
                       handleColorClick(color.name); // Usar o name da cor
-                      handleSelectBorder(index);
+                      // handleSelectBorder(index);
                     }}
                   >
                     <div
