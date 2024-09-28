@@ -1,5 +1,4 @@
-"use client"; // Certifique-se de que isso está presente
-
+ "use client"
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext();

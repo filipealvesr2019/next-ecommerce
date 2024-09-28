@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useConfig } from "../../context/ConfigContext";
 import Header from "@/components/Header/Header";
 import Navbar from "@/components/Navbar/Navbar";
+import RootLayout from "@/app/layout";
 
 
 
@@ -45,6 +46,9 @@ const RegisterLink = () => {
 
   return (
     <>
+        <RootLayout>
+
+
       <Header />
       <Navbar />
       {/* <Helmet>
@@ -83,6 +87,9 @@ const RegisterLink = () => {
           </div>
         </form>
       </div>
+
+        </RootLayout>
+
     </>
   );
 };

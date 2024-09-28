@@ -61,9 +61,7 @@ const Cart = () => {
   const { apiUrl } = useConfig();
  
   const [cepViaCep, setCepViaCep] = useState("");
-  useEffect(() => {
-    logPageView();
-  }, [location]);
+
   const [isRadioButtonEnabled, setIsRadioButtonEnabled] = useState(false);
   useEffect(() => {
     // Atualiza o estado do botão baseado nas condições
