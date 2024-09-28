@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
-import Navbar from "./Navbar";
+
 import { useAuth } from "../context/AuthContext";
 import Cookies from "js-cookie";
 import axios from "axios";
 import CircularIndeterminate from "./CircularIndeterminate";
 import { Pagination, Stack } from "@mui/material";
 import styles from "./MyOrders.module.css";
-import { useConfig } from "../context/ConfigContext";
-import { logPageView } from "../../analytics";
-import { Helmet } from "react-helmet";
+import { useConfig } from "../../../context/ConfigContext";
+import Header from "../Header/Header";
+import Navbar from "../Navbar/Navbar";
+import Link from "next/link";
+
 const MyOrders = () => {
   const userId = Cookies.get("userId");
   const { logout, loggedIn } = useAuth();
@@ -25,11 +26,7 @@ const MyOrders = () => {
   const [expanded, setExpanded] = useState({});
   const [loading, setLoading] = useState(true);
   const { apiUrl } = useConfig();
-  const location = useLocation();
-
-  useEffect(() => {
-    logPageView();
-  }, [location]);
+  
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded((prevExpanded) => ({
       ...prevExpanded,
@@ -91,14 +88,14 @@ const MyOrders = () => {
     <>
       <Header />
       <Navbar />
-      <Helmet>
+      {/* <Helmet>
         <title>Histórico de Compras - Loja Mediewal</title>
         <meta
           name="description"
           content="Veja as últimas novidades em nossa loja, com uma seleção de produtos novos."
         />
       </Helmet>
-      
+       */}
       {loading ? (
         <div
           style={{
@@ -132,7 +129,7 @@ const MyOrders = () => {
                         key={prodIndex}
 
                       >
-                        <Link to={`/order/${order.custumerId}/${order._id}`} style={{
+                        <Link href={`/order/${order.custumerId}/${order._id}`} style={{
                           textDecoration: 'none',
                         }} >
                           <img
@@ -148,7 +145,7 @@ const MyOrders = () => {
                   <div
 
                   >
-                     <Link to={`/order/${order.custumerId}/${order._id}`} style={{
+                     <Link href={`/order/${order.custumerId}/${order._id}`} style={{
                           textDecoration: 'none',
                         }} >
                     {" "}
