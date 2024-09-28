@@ -32,7 +32,7 @@ const ResetPasswordPage = ({params}) => {
       }
 
       // Enviar a solicitação para redefinir a senha
-      const response = await axios.post(`${apiUrl}/reset-password/:token`, {
+      const response = await axios.post(`https://serveradmin-whhj.onrender.com/reset-password/:token`, {
         token,
         newPassword,
         confirmPassword,
