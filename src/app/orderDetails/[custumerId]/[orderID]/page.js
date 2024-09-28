@@ -63,7 +63,7 @@ const OrderDetails = ({ params }) => {
           </div>
         </div>
       ) : (
-        <p><CircularIndeterminate/></p>
+        <div><CircularIndeterminate/></div>
       )}
     </>
   );
