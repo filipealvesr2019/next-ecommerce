@@ -130,7 +130,7 @@ const MyOrders = () => {
                         key={prodIndex}
 
                       >
-                        <Link to={`/order/${order.custumerId}/${order._id}`} style={{
+                        <Link href={`/orderDetails/${order.custumerId}/${order._id}`} style={{
                           textDecoration: 'none',
                         }} >
                           <img
@@ -146,7 +146,7 @@ const MyOrders = () => {
                   <div
 
                   >
-                     <Link href={`/order/${order.custumerId}/${order._id}`} style={{
+                     <Link href={`/orderDetails/${order.custumerId}/${order._id}`} style={{
                           textDecoration: 'none',
                         }} >
                     {" "}

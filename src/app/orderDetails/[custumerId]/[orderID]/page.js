@@ -1,31 +1,28 @@
+ "use client"
 import React from "react";
-import { useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom"; // Importe o Link do React Router
-import Header from "./Header";
-import Navbar from "./Navbar";
-import { useAuth } from "../context/AuthContext";
+
+
 import Cookies from "js-cookie";
 import axios from "axios";
-import CircularIndeterminate from "./CircularIndeterminate";
-import { logPageView } from "../../analytics";
-import { Helmet } from "react-helmet";
+import { useConfig } from "../../../../../context/ConfigContext";
+import Header from "@/components/Header/Header";
+import Navbar from "@/components/Navbar/Navbar";
+import CircularIndeterminate from "@/components/CircularIndeterminate/CircularIndeterminate";
+import { useAuth } from "../../../../../context/AuthContext";
 
-const OrderDetails = () => {
-  const { id } = useParams(); // Certifique-se de que o parâmetro corresponde ao nome na URL
+
+const OrderDetails = ({ params }) => {
+  const { id } = params; // Certifique-se de que o parâmetro corresponde ao nome na URL
   const userId = Cookies.get("userId");
   const { logout, loggedIn } = useAuth();
   const [boleto, setBoleto] = useState(""); // Usando useState para um único boleto
   const { apiUrl } = useConfig();
-  const location = useLocation();
 
-  useEffect(() => {
-    logPageView();
-  }, [location]);
   useEffect(() => {
     if (loggedIn) {
       axios
-        .get(`${apiUrl}/api/boleto/${id}/${userId}`)
+        .get(`https://serveradmin-whhj.onrender.com/api/boleto/${id}/${userId}`)
         .then((response) => {
           console.log("Resposta da API:", response); // Verificar a resposta completa da API
           console.log("Dados recebidos:", response.data); // Verificar os dados recebidos no console
@@ -35,8 +32,7 @@ const OrderDetails = () => {
           console.error("Erro ao obter os pedidos:", error);
         });
     }
-    console.log("id", id);
-    console.log("userId", userId);
+   
   }, [loggedIn, userId]);
   
 
@@ -44,13 +40,13 @@ const OrderDetails = () => {
     <>
       <Header />
       <Navbar />
-      <Helmet>
+      {/* <Helmet>
         <title>Histórico de Compras - Loja Mediewal</title>
         <meta
           name="description"
           content="Veja as últimas novidades em nossa loja, com uma seleção de produtos novos."
         />
-      </Helmet>
+      </Helmet> */}
       {boleto ? (
         <div style={{ marginTop: "15rem" }}>
           <span>{boleto.billingType}</span>
