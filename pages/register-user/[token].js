@@ -21,7 +21,7 @@ const ResetPasswordPage = ({ token }) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
-
+console.log(token)
   useEffect(() => {
     // Verifies if the token is present in the URL
     if (!token) {
