@@ -1,12 +1,13 @@
+ "use client"
 import React, { useState } from 'react';
 import axios from 'axios';
-import Header from './Header';
-import Navbar from './Navbar';
+
 import styles from './PasswordResetRequest.module.css';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useConfig } from '../context/ConfigContext';
-import { Helmet } from 'react-helmet';
+import Header from '@/components/Header/Header';
+import Navbar from '@/components/Navbar/Navbar';
+import { useConfig } from '../../../context/ConfigContext';
 const PasswordResetRequest = () => {
   const [email, setEmail] = useState('');
   const { apiUrl } = useConfig();
@@ -31,13 +32,13 @@ const PasswordResetRequest = () => {
     <>
       <Header />
       <Navbar />
-      <Helmet>
+      {/* <Helmet>
         <title>Mudar Senha- Loja Mediewal</title>
         <meta
           name="description"
           content="Veja as últimas novidades em nossa loja, com uma seleção de produtos novos."
         />
-      </Helmet>
+      </Helmet> */}
       <div className={styles.formContainer}>
         <h1 className={styles.formContainer__h1}>Redefinir Senha</h1>
      
