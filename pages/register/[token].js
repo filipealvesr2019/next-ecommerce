@@ -1,17 +1,22 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/router'; // Import useRouter for Next.js routing
 
 import style from "./ResetPasswordPage.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from '@/components/Header/Header';
+export const getServerSideProps = async (context) => {
+  const { token } = context.query;
+  
+  return {
+    props: {
+      token: token || null,
+    },
+  };
+};
 
-const ResetPasswordPage = () => {
-  const router = useRouter(); // Get the router object
-
-  const { token } = router.query; // Extract the token from the URL parameters
+const ResetPasswordPage = ({ token }) => {
 
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
