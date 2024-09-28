@@ -14,6 +14,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 import { useConfig } from '../../../../context/ConfigContext';
+import Header from '@/components/Header/Header';
+import Navbar from '@/components/Navbar/Navbar';
 
 
 function RegisterUser({params}) {
