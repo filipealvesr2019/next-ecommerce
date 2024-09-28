@@ -21,7 +21,6 @@ const SearchBar = () => {
   };
 
   return (
-    <RootLayout>
 
     <div className={styles.inputWrapper}>
       <input
@@ -40,7 +39,7 @@ const SearchBar = () => {
       />
     </div>
 
-    </RootLayout>
+   
   );
 };
 

@@ -34,12 +34,14 @@ const Header = () => {
 
   const { unreadCount } = useUnreadCount(); // Obter o estado do contexto
   const [showInput, setShowInput] = useState(false);
+  
   useEffect(() => {
     const storedCartItemCount = localStorage.getItem("cartItemCount");
     if (storedCartItemCount !== null) {
-      setLocalCartItemCount(Number(storedCartItemCount));
+        setLocalCartItemCount(Number(storedCartItemCount));
     }
-  }, []);
+}, []);
+
 
   useEffect(() => {
     if (loggedIn) {
@@ -138,6 +140,7 @@ const Header = () => {
   };
   return (
     <>
+    
       <div className={styles.ContainerHeader}>
  
           <div className={styles.desktopContainer}>
@@ -154,10 +157,11 @@ const Header = () => {
               </i>
             </div>
 
+              
             {/* Componente SearchBar à direita */}
             <div className={styles.SearchBar}>
               <SearchBar />
-            </div>
+            </div>     
        
             <div>
               {openBellModal && loggedIn === true && (

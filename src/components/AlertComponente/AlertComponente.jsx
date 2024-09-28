@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios"; // Corrigindo a importação do Axios
 import styles from "./AlertComponente.module.css";
-import { logPageView } from "../../analytics";
 import { useAuth } from "../../../context/AuthContext";
 import { useUnreadCount } from "../../../context/UnreadContext";
 import { useConfig } from "../../../context/ConfigContext";
@@ -20,11 +19,8 @@ const AlertComponente = () => {
   const [expanded, setExpanded] = useState({});
   const [loading, setLoading] = useState(true);
   const { apiUrl } = useConfig();
-  const location = useLocation();
+ 
 
-  useEffect(() => {
-    logPageView();
-  }, [location]);
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded((prevExpanded) => ({
       ...prevExpanded,

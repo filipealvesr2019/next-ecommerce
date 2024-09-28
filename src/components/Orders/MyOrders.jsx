@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
 import Header from "./Header";
 import Navbar from "./Navbar";
 import { useAuth } from "../context/AuthContext";

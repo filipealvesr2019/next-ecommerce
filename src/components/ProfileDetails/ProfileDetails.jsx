@@ -13,7 +13,7 @@ const ProfileDetails = () => {
           content="Veja as últimas novidades em nossa loja, com uma seleção de produtos novos."
         />
       </Helmet> */}
-        <Header></Header>
+        <Header />
     </div>
   )
 }

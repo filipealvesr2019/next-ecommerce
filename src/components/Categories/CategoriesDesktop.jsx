@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
 import ImageGalleryDesktop from "./ImageGalleryDesktop";
 import styles from "./CategoriesMobile.module.css";
 import Navbar from "./Navbar";

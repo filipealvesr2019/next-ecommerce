@@ -7,8 +7,8 @@ import CategoryCarousel from "@/components/CategoryCarousel/CategoryCarousel";
 import Header from "@/components/Header/Header";
 import NewArrivals from "@/components/NewArrivals/NewArrivals";
 import Footer from "@/components/Footer/Footer";
-import RootLayout from "./layout";
-
+ 
+ 
 
 export const metadata = {
   title: "Home - Loja Mediewal", // Define o título da página
@@ -20,11 +20,11 @@ export const metadata = {
 };
 
 export default function Home() {
- 
+
   return (
     <div>
-      <RootLayout>
-        <Header />
+
+       <Header /> 
 
         <Navbar />
         <Slider />
@@ -38,7 +38,7 @@ export default function Home() {
       </div>
 
       <Footer />
-      </RootLayout>
+
      
 
      
