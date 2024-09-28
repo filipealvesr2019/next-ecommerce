@@ -192,15 +192,16 @@ const Header = () => {
                               <Link
                                 href={"/perfil"}
                                 style={{ textDecoration: "none" }}
+                                
                               >
-                                <a
+                                <span
                                   style={{
                                     textDecoration: "none",
                                     color: "rgb(108, 117, 125)",
                                   }}
                                 >
                                   Minha Conta
-                                </a>
+                                </span>
                               </Link>
                             </li>
                             <li className={styles.li}>
@@ -208,9 +209,9 @@ const Header = () => {
                                 href={"/orders"}
                                 style={{ textDecoration: "none" }}
                               >
-                                <a style={{ color: "rgb(108, 117, 125)" }}>
+                                <span style={{ color: "rgb(108, 117, 125)" }}>
                                   Historico de Compras
-                                </a>
+                                </span>
                               </Link>
                             </li>
                             <li className={styles.li}>
@@ -218,9 +219,9 @@ const Header = () => {
                                 href={"/forgotPassword"}
                                 style={{ textDecoration: "none" }}
                               >
-                                <a style={{ color: "rgb(108, 117, 125)" }}>
+                                <span style={{ color: "rgb(108, 117, 125)" }}>
                                   Alterar senha
-                                </a>
+                                </span>
                               </Link>
                             </li>
                           </ul>
