@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import Header from './Header';
+
+
 import style from "./ResetPasswordPage.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useConfig } from '../context/ConfigContext';
-import { Helmet } from 'react-helmet';
-const ResetPasswordPage = () => {
-  const { token } = useParams(); // Extrai o token da URL
+import Header from '@/components/Header/Header';
+
+const ResetPasswordPage = ({params}) => {
+  const { token } = params; // Extrai o token da URL
 
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -49,10 +50,10 @@ const ResetPasswordPage = () => {
   return (
     <div>
       <Header />
-      <Helmet>
+      {/* <Helmet>
         <title>Mudar Senha - Loja Mediewal</title>
         <meta name="description" content="Veja as últimas novidades em nossa loja, com uma seleção de produtos novos." />
-      </Helmet>
+      </Helmet> */}
       <div className={style.formContainer}>
       <ToastContainer
           position="top-center"

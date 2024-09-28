@@ -1,26 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "./Navbar";
-import Header from "./Header";
+
 import styles from "./RegisterLink.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useConfig } from "../context/ConfigContext";
-import { useLocation } from "react-router-dom";
-import { logPageView } from "../../analytics";
-import { Helmet } from "react-helmet";
+import { useConfig } from "../../context/ConfigContext";
+import Header from "@/components/Header/Header";
+import Navbar from "@/components/Navbar/Navbar";
+
+
 
 const RegisterLink = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { apiUrl } = useConfig();
-  const location = useLocation();
-
-  useEffect(() => {
-    logPageView();
-  }, [location]);
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -51,10 +46,10 @@ const RegisterLink = () => {
     <>
       <Header />
       <Navbar />
-      <Helmet>
+      {/* <Helmet>
         <title>Cadastro de usuário  - Loja Mediewal</title>
         <meta name="description" content="Veja as últimas novidades em nossa loja, com uma seleção de produtos novos." />
-      </Helmet>
+      </Helmet> */}
       <div className={styles.formContainer}>
         <h1 className={styles.formContainer__h1}>Digite seu email</h1>
 
