@@ -7,7 +7,6 @@ import style from "./ResetPasswordPage.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from '@/components/Header/Header';
-import { useConfig } from '../../../../context/ConfigContext';
 
 const ResetPasswordPage = ({params}) => {
   const { token } = params; // Extrai o token da URL
@@ -15,7 +14,6 @@ const ResetPasswordPage = ({params}) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
-  const { apiUrl } = useConfig();
   useEffect(() => {
     // Verifica se o token está presente na URL
     if (!token) {
