@@ -6,7 +6,7 @@ import Providers from "../../providers/providers";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body >
         <Providers> {/* Move providers here */}
           {children}
         </Providers>
