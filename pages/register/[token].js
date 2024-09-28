@@ -8,8 +8,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from '@/components/Header/Header';
 
-const ResetPasswordPage = ({params}) => {
-  const { token } = params; // Extrai o token da URL
+const ResetPasswordPage = () => {
+  const { token } = router.query; // Extract the token from the URL parameters
 
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
