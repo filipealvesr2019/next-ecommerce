@@ -11,7 +11,7 @@ import Cookies from "js-cookie";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SearchIcon from "@mui/icons-material/Search";
 
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "../../app/SearchBar/SearchBar";
 
 import { useAuth } from "../../../context/AuthContext";
 import AlertComponente from "../AlertComponente/AlertComponente";

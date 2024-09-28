@@ -1,12 +1,9 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Pagination from "@mui/material/Pagination"; // Adjust imports as needed
-import Stack from "@mui/material/Stack";
+
 import styles from "./SearchResults.module.css";
 
 
-import { useConfig } from "../../../../../context/ConfigContext";
 
 const SearchResults = ({ params }) => {
   const { query } = params; // Extracting query from URL
@@ -20,10 +17,9 @@ const SearchResults = ({ params }) => {
   }, [query]);
 
   const fetchSearchResults = async () => {
-    const { apiUrl } = useConfig(); // Ensure this is properly configured
     try {
       const response = await fetch(
-        `${apiUrl}/api/search/product?searchQuery=${query}`
+        `https://serveradmin-whhj.onrender.com/api/search/product?searchQuery=${query}`
       );
       const data = await response.json();
       setSearchResults(data.products);
