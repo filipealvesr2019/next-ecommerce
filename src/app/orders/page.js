@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 
 import Cookies from "js-cookie";
 import axios from "axios";
-import CircularIndeterminate from "./CircularIndeterminate";
 import { Pagination, Stack } from "@mui/material";
 import styles from "./MyOrders.module.css";
 import { useAuth } from "../../../context/AuthContext";
@@ -11,6 +10,7 @@ import { useConfig } from "../../../context/ConfigContext";
 import Header from "@/components/Header/Header";
 import Navbar from "@/components/Navbar/Navbar";
 import Link from "next/link";
+import CircularIndeterminate from "@/components/CircularIndeterminate/CircularIndeterminate";
 
 const MyOrders = () => {
   const userId = Cookies.get("userId");
