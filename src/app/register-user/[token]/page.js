@@ -15,18 +15,11 @@ import "react-toastify/dist/ReactToastify.css";
 import Header from '@/components/Header/Header';
 import Navbar from '@/components/Navbar/Navbar';
 import { useConfig } from '../../context/ConfigContext';
-export const getServerSideProps = async (context) => {
-  const { token } = context.query;
-  
-  return {
-    props: {
-      token: token || null,
-    },
-  };
-};
 
 
-function RegisterUser({token}) {
+function RegisterUser({params}) {
+    const { token } = params; // Extracting query from URL
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -77,7 +70,7 @@ function RegisterUser({token}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${apiUrl}/register/${token}`, { email, password, role });
+      const response = await axios.post(`${apiUrl}/register-user/${token}`, { email, password, role });
       setMessage(response.data.message);
       toast.success("Usuário registrado com sucesso.");
 
