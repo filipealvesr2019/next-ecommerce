@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './SearchBar.module.css';
+import RootLayout from '@/app/layout';
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -20,6 +21,8 @@ const SearchBar = () => {
   };
 
   return (
+    <RootLayout>
+
     <div className={styles.inputWrapper}>
       <input
         type="text"
@@ -36,6 +39,8 @@ const SearchBar = () => {
         alt="Search"
       />
     </div>
+
+    </RootLayout>
   );
 };
 
