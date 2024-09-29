@@ -28,7 +28,7 @@ const Navbar = () => {
           <span className="span">Categorias</span>
         </Link>
 
-        <Link href={"/carrinho"} className={`nav-item ${isActive(2)}`}>
+        <Link href={"/cart"} className={`nav-item ${isActive(2)}`}>
           <img src="https://i.ibb.co/RPwPY6t/shopping-bag-2.png" alt="icone do carrinho de compras"/>
           <span className="span">Carrinho</span>
         </Link>

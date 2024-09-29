@@ -27,6 +27,7 @@ import CircularIndeterminate from "@/components/CircularIndeterminate/CircularIn
 import Navbar from "@/components/Navbar/Navbar";
 import Header from "@/components/Header/Header";
 import { useAuth } from "../../../context/AuthContext";
+import LoginForm from "@/components/Login/LoginForm";
 const Cart = () => {
   const [getCart, setGetCart] = useState([]);
   const [handleDeleteProduct, setHandleDeleteProduct] = useState(false);
@@ -324,6 +325,9 @@ const Cart = () => {
   }
 
   return (
+    <>
+    {!loggedIn ? <LoginForm></LoginForm>: 
+    
     <div className={styles.cartContainer}>
       <Header />
       <ToastContainer
@@ -969,6 +973,10 @@ const Cart = () => {
         </>
       )}
     </div>
+    
+    
+    }
+    </>
   );
 };
 

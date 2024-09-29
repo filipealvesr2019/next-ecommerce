@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
@@ -9,6 +9,8 @@ import Header from "@/components/Header/Header";
 import Navbar from "@/components/Navbar/Navbar";
 import { useConfig } from "../../../context/ConfigContext";
 import { useAuth } from "../../../context/AuthContext";
+import { Login } from "@mui/icons-material";
+import LoginForm from "@/components/Login/LoginForm";
 
 const Heart = () => {
   const [favorites, setFavorites] = useState([]);
@@ -38,27 +40,53 @@ const Heart = () => {
   }, [loggedIn, userId]);
 
   const charLimit = 24;
-// Função para remover acentos
-const removeAccents = (name) => {
-  return name
-  .normalize("NFD") // Normaliza a string para decompor caracteres acentuados
-  .replace(/[\u0300-\u036f]/g, "") // Remove os diacríticos (acentos)
-  .toLowerCase() // Converte para letras minúsculas
-  .replace(/\s+/g, "-") // Substitui espaços por hífens
-  .replace(/[^\w\-]+/g, ""); // Remove caracteres não alfanuméricos (exceto hífens)
-};
-
-
+  // Função para remover acentos
+  const removeAccents = (name) => {
+    return name
+      .normalize("NFD") // Normaliza a string para decompor caracteres acentuados
+      .replace(/[\u0300-\u036f]/g, "") // Remove os diacríticos (acentos)
+      .toLowerCase() // Converte para letras minúsculas
+      .replace(/\s+/g, "-") // Substitui espaços por hífens
+      .replace(/[^\w\-]+/g, ""); // Remove caracteres não alfanuméricos (exceto hífens)
+  };
 
   return (
     <div className={styles.HeartContainer}>
-   
-
-
       <Header />
-         
 
       <Navbar />
+      {!loggedIn ? (
+        <>
+          {" "}
+          <LoginForm></LoginForm>
+        </>
+      ) : (
+        <>
+          <ul className={styles.HeartUL}>
+            {favorites.map((favorite) => (
+              <div key={favorite._id} className={styles.Heartfavorite}>
+                <Link
+                  href={`/products/${removeAccents(favorite.name)}/${
+                    favorite._id
+                  }`}
+                  className={styles.HeartLink}
+                >
+                  <img
+                    src={favorite.variations[0].urls[0]}
+                    alt="icone dos fovoritos"
+                    className={styles.HeartIMG}
+                  />
+                  <li className={styles.Name}>
+                    {favorite.name.length > charLimit
+                      ? favorite.name.substring(0, charLimit) + "..."
+                      : favorite.name}
+                  </li>
+                </Link>
+              </div>
+            ))}
+          </ul>
+        </>
+      )}
       {/* <Helmet>
         <title>Página de Favoritos - Loja Mediewal</title>
         <meta
@@ -66,25 +94,6 @@ const removeAccents = (name) => {
           content="Veja as últimas novidades em nossa loja, com uma seleção de produtos novos."
         />
       </Helmet> */}
-      <ul className={styles.HeartUL}>
-        {favorites.map((favorite) => (
-          <div key={favorite._id} className={styles.Heartfavorite}>
-            <Link href={`/products/${removeAccents(favorite.name)}/${favorite._id}`} className={styles.HeartLink}>
-              <img
-                src={favorite.variations[0].urls[0]}
-                alt="icone dos fovoritos"
-                className={styles.HeartIMG}
-              />
-              <li className={styles.Name}>
-                {favorite.name.length > charLimit
-                  ? favorite.name.substring(0, charLimit) + "..."
-                  : favorite.name}
-              </li>
-            </Link>
-          </div>
-        ))}
-
-      </ul>
     </div>
   );
 };

@@ -1,14 +1,15 @@
+"use client"
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useConfig } from "../context/ConfigContext";
+import { useConfig } from "../../../../context/ConfigContext";
+import Link from "next/link";
 
 const ImageGalleryMobile = () => {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  
   const { apiUrl } = useConfig();
-  const location = useLocation();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,7 +69,7 @@ const ImageGalleryMobile = () => {
             {category.images.map((subcategoryImages, index) =>
               subcategoryImages.map((image) => (
                 <div key={image._id}>
-                  <Link to={`/categories/${encodeURIComponent(category.name)}`}>
+                  <Link href={`/categories/${encodeURIComponent(category.name)}`}>
                     <img
                       src={image.imageUrl}
                       alt={`Image ${image._id}`}
