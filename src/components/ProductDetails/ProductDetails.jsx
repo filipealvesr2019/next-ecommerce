@@ -27,6 +27,7 @@ import Header from "../Header/Header";
 import Navbar from "../Navbar/Navbar";
 import ZoomInComponent from '../ZoomIn/ZoomInComponent'
 import CartSidebar from "../cartSidebar/CartSidebar";
+import { useSwipeable } from "react-swipeable";
 const ProductDetails = ({productId, name}) => {
   const [product, setProduct] = useState({ variations: [] });
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -530,6 +531,14 @@ const ProductDetails = ({productId, name}) => {
   const canonicalUrl = `https://mediewal.com.br/products/${name}/${productId} `;
 
  console.log("canonicalUrl", canonicalUrl)
+   // Lida com o swipe
+   const handlers = useSwipeable({
+    onSwipedLeft: () => handleArrowClick("next"),  // Passa para a próxima imagem
+    onSwipedRight: () => handleArrowClick("prev"), // Volta para a imagem anterior
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,  // Para permitir que o swipe funcione no mouse em dispositivos de desktop também
+  });
+
   return (
     <>
       <div className={styles.ProductDetailsContainer}>
@@ -707,54 +716,50 @@ const ProductDetails = ({productId, name}) => {
           </div>
         </div>
 
-        <div className={styles.carroselMobile}>
-          <div key={currentImageIndex} className="image-container">
-            {product.variations[currentImageIndex] && (
-              <img
-                src={
-                  product.variations[selectedColorIndex]?.urls[
-                    imageIndices[product.variations[selectedColorIndex]?.color]
-                  ] || selectedImageUrl
-                }
-                alt={product.variations[selectedColorIndex]?.color}
-                style={{ width: "100vw" }}
-                onClick={() => {
-                  handleImageClick,
-                    handleDotChangeClick(variationIndex, urlIndex);
-                }} // Se você ainda precisa deste manipulador de cliques
-              />
-            )}
+        <div className={styles.carroselMobile} {...handlers}>
+      <div key={currentImageIndex} className="image-container">
+        {product.variations[currentImageIndex] && (
+          <img
+            src={
+              product.variations[selectedColorIndex]?.urls[
+                imageIndices[product.variations[selectedColorIndex]?.color]
+              ] || selectedImageUrl
+            }
+            alt={product.variations[selectedColorIndex]?.color}
+            style={{ width: "100vw" }}
+            onClick={() => {
+              handleDotChangeClick(variationIndex, urlIndex);
+            }}
+          />
+        )}
 
-            <div className="navigation-arrows">
-              <div className="arrow" onClick={() => handleArrowClick("prev")}>
-                <img
-                  src="https://i.ibb.co/8MqhvFq/left-arrow.png"
-                  style={{ fontSize: "2rem", zIndex: "-8", color: "white" }}
-                />
-              </div>
+        <div className="navigation-arrows">
+          <div className="arrow" onClick={() => handleArrowClick("prev")}>
+            <img
+              src="https://i.ibb.co/8MqhvFq/left-arrow.png"
+              style={{ fontSize: "2rem", zIndex: "-8", color: "white" }}
+            />
+          </div>
 
-              <div className="arrow" onClick={() => handleArrowClick("next")}>
-                <img
-                  src="https://i.ibb.co/vDty4Gc/right-arrow-1.png"
-                  style={{ fontSize: "2rem", zIndex: "-7", color: "white" }}
-                />
-              </div>
-            </div>
-
-            <div className="dot-container">
-              {product.variations?.map((variation, index) => (
-                <span
-                  key={index}
-                  className={`dot ${
-                    index === selectedColorIndex ? "active" : ""
-                  }`}
-                  onClick={() => handleDotClick(index)}
-                />
-              ))}
-            </div>
+          <div className="arrow" onClick={() => handleArrowClick("next")}>
+            <img
+              src="https://i.ibb.co/vDty4Gc/right-arrow-1.png"
+              style={{ fontSize: "2rem", zIndex: "-7", color: "white" }}
+            />
           </div>
         </div>
 
+        <div className="dot-container">
+          {product.variations?.map((variation, index) => (
+            <span
+              key={index}
+              className={`dot ${index === selectedColorIndex ? "active" : ""}`}
+              onClick={() => handleDotClick(index)}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
         <div>
           <div
             style={{
