@@ -11,7 +11,7 @@ import Footer from "@/components/Footer/Footer";
  
 
 export const metadata = {
-  title: "Home - Loja Mediewal", // Define o título da página
+  title: "Loja Mediewal", // Define o título da página
   description:
     "Somos a Mediewal, uma marca de roupas masculinas criada para quem quer se vestir bem e reinar no estilo. Inspirada no conceito de elegância  e confiança.", // Descrição da página
   icons: {
