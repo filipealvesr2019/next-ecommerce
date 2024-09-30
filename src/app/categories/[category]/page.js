@@ -56,7 +56,7 @@ export async function generateMetadata({ params }) {
         alternates: {
           canonical: canonicalUrl,
         },
-        keywords: [keywords, 'camiseta masculina', 'camisetas masculinas', 'Camisetas Masculina'],
+        keywords: [keywords, 'camiseta masculina', 'camisetas masculinas', 'camisetas'],
 
       };
 
