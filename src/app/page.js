@@ -17,6 +17,8 @@ export const metadata = {
   icons: {
     icon: "/favicon.svg", // Define o favicon
   },
+  keywords: ['Loja Mediewal', 'Moda masculina', 'Dry Fit'],
+
 };
 
 export default function Home() {

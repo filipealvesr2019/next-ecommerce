@@ -4,15 +4,21 @@ import axios from "axios";
 // Função para obter os dados do produto
 const getProductData = async (category, token, apiUrl) => {
   const encodedProductName = encodeURIComponent(category);
+  
   const response = await axios.get(
-    `${apiUrl}/api/categories/${encodedProductName}`,
+    `${apiUrl}/api/categories/${encodedProductName}/mixedProducts`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     }
   );
-  return response.data.product;
+  const uniqueSubcategories = [...new Set(response.data.mixedProducts.map((product) => product.subcategory))];
+
+  return {
+    products: response.data.mixedProducts,
+    uniqueSubcategories,
+  };
 };
 // Exportando a metadata
 export async function generateMetadata({ params }) {
@@ -27,6 +33,7 @@ export async function generateMetadata({ params }) {
   } catch (error) {
     console.error("Erro ao obter detalhes do produto:", error);
   }
+  const keywords = productData?.uniqueSubcategories ? productData.uniqueSubcategories.join(', ') : '';
 
   const canonicalUrl = `https://mediewal.com.br/categories/${category}`; // Substitua pela URL canônica correta
   // Define metadados dinâmicos com base na categoria
@@ -38,6 +45,8 @@ export async function generateMetadata({ params }) {
         alternates: {
           canonical: canonicalUrl, // Tag canônica
         },
+        keywords: [keywords,'Moda Dri Fit', 'Moda Dry Fit', 'Moda Dry Fit Masculina', 'Moda Dri Fit Masculina'],
+
       };
     
     case "camiseta-performance":
@@ -47,6 +56,8 @@ export async function generateMetadata({ params }) {
         alternates: {
           canonical: canonicalUrl,
         },
+        keywords: [keywords, 'camiseta masculina', 'camisetas masculinas', 'Camisetas Masculina'],
+
       };
 
     case "calcao-masculino":
@@ -56,6 +67,8 @@ export async function generateMetadata({ params }) {
         alternates: {
           canonical: canonicalUrl,
         },
+        keywords: [keywords, 'camiseta masculina', 'Camiseta Masculina', 'Moda Dry Fit Masculina', 'Moda Dri Fit Masculina'],
+
       };
       case "calcao-dri-fit":
         return {
@@ -64,6 +77,8 @@ export async function generateMetadata({ params }) {
           alternates: {
             canonical: canonicalUrl,
           },
+          keywords: [keywords, 'camiseta masculina', 'Camiseta Masculina', 'Moda Dry Fit Masculina', 'Moda Dri Fit Masculina'],
+
         };
 
       
@@ -74,6 +89,7 @@ export async function generateMetadata({ params }) {
         alternates: {
           canonical: canonicalUrl,
         },
+        
       };
   }
 }
