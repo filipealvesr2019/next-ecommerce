@@ -13,6 +13,7 @@ const getProductData = async (name, productId, token, apiUrl) => {
       },
     }
   );
+  console.log("product detail", response.data.product)
   return response.data.product;
 };
 
@@ -29,7 +30,8 @@ export async function generateMetadata({ params }) {
   } catch (error) {
     console.error('Erro ao obter detalhes do produto:', error);
   }
- 
+  const keywords = productData;
+
     const canonicalUrl = `https://mediewal.com.br/products/${name}/${productId}`; // Substitua pela URL canônica correta
 
   return {
@@ -38,6 +40,7 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: canonicalUrl, // Adicionando a tag canônica
     },
+    keywords: [keywords.category, keywords.subcategory],
   };
 }
 
@@ -54,16 +57,37 @@ const ProductPage = async ({ params }) => {
   } catch (error) {
     console.error('Erro ao obter detalhes do produto:', error);
   }
+  const formatProductNameForUrl = (productName) => {
+    return productName
+      .toLowerCase() // Converte para letras minúsculas
+      .replace(/\s+/g, '-') // Substitui espaços por traços
+      .replace(/[^\w-]+/g, ''); // Remove caracteres especiais (exceto traços e letras)
+  };
   
+// Cria o JSON-LD para o produto específico
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": productData.name,
+  "image": productData.variations[0].urls[0], // A primeira imagem da variação
+  "description": productData.description,
+  "sku": productData._id,
+  "offers": {
+    "@type": "Offer",
+    "url": `https://mediewal.com.br/products/${formatProductNameForUrl(productData.name)}/${productData._id}`,
+    "priceCurrency": "BRL",
+    "price": productData.variations[0].sizes[0].price, // Preço do primeiro tamanho
+    "availability": productData.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+  },
+};
   return (
     <div>
       {productData ? (
         <>
-{/*   
-          <h1>{productData.name}</h1>
-          <h2>{productData.description}</h2>
-          <img src={productData.variations[0]?.urls[0]} alt={productData.name} /> */}
-          {/* Renderize as variações e tamanhos conforme necessário */}
+  <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
           <ProductDetails productId={productId} name={name}/>
         </>
       ) : (
