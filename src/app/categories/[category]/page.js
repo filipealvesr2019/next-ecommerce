@@ -108,8 +108,45 @@ const ProductPage = async ({ params }) => {
     console.error("Erro ao obter detalhes do produto:", error);
   }
 
+  
+ // Cria o JSON-LD para os produtos
+ const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": `Produtos da categoria ${category}`,
+  "itemListElement": productData?.products.map((product, index) => {
+    const imageUrls = product.variations.map(variation => variation.urls[0]); // A primeira imagem de cada variação
+    const firstSize = product.variations[0]?.sizes[0]; // Acessando o primeiro tamanho da primeira variação
+    const url = `https://mediewal.com.br/products/${product.name}/${product._id}`; // URL canônica correta
+
+    return {
+      "@type": "Product",
+      "position": index + 1,
+      "name": product.name,
+      "image": imageUrls[0], // URL da primeira imagem do produto
+      "description": product.description,
+      "sku": product._id,
+      "offers": {
+        "@type": "Offer",
+        "url": url,
+        "priceCurrency": "BRL",
+        "price": firstSize && firstSize.price , // Preço do primeiro tamanho, ou 0 se não existir
+        "availability": "https://schema.org/InStock",
+      },
+    
+    };
+  }),
+};
+
   return (
     <div>
+      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+
       <CategoriesComponent category={category} />
     </div>
   );
