@@ -186,7 +186,9 @@ const CartSidebar = () => {
                   >
                     <span className={styles.spanName}>
                       {" "}
-                      {item.productId.name}
+                      {item.productId.name.length > 5
+                        ? `${item.productId.name.slice(0, 32)}...`
+                        : item.productId.name}{" "}
                     </span>
                     <span className={styles.spanSize}>
                       {" "}
