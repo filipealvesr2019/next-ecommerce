@@ -67,7 +67,7 @@ export async function generateMetadata({ params }) {
         alternates: {
           canonical: canonicalUrl,
         },
-        keywords: [keywords, 'camiseta masculina', 'Camiseta Masculina', 'Moda Dry Fit Masculina', 'Moda Dri Fit Masculina'],
+        keywords: [keywords, 'Calção Masculino', 'Calção', 'Shorts Masculinos'],
 
       };
       case "calcao-dri-fit":
@@ -77,7 +77,7 @@ export async function generateMetadata({ params }) {
           alternates: {
             canonical: canonicalUrl,
           },
-          keywords: [keywords, 'camiseta masculina', 'Camiseta Masculina', 'Moda Dry Fit Masculina', 'Moda Dri Fit Masculina'],
+          keywords: [keywords, 'Calção Dri Fit', 'Calção Dry Fit'],
 
         };
 
