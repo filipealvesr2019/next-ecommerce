@@ -22,10 +22,25 @@ export const metadata = {
 };
 
 export default function Home() {
-
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Loja Mediewal",
+    "url": "https://mediewal.com.br/",
+    "description": "Somos a Mediewal, uma marca de roupas masculinas criada para quem quer se vestir bem e reinar no estilo. Inspirada no conceito de elegância  e confiança.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://mediewal.com.br/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+  
   return (
     <div>
-
+ <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
        <Header /> 
 
         <Navbar />
