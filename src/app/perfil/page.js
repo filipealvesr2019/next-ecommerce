@@ -1,10 +1,9 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import LogoutIcon from "@mui/icons-material/Logout";
-import Protected from '@/components/Protected/Protected';
-import Header from '@/components/Header/Header';
+import Protected from '../../components/Protected/Protected';
+import Header from '../../components/Header/Header';
 import { useAuth } from '../../../context/AuthContext';
-import LoginForm from '@/components/Login/LoginForm';
+import LoginForm from '../../components/Login/LoginForm';
 ;
 
 

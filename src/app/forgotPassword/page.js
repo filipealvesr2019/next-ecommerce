@@ -1,12 +1,13 @@
  "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import styles from './PasswordResetRequest.module.css';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Header from '@/components/Header/Header';
-import Navbar from '@/components/Navbar/Navbar';
+
+import Header from '../../components/Header/Header';
+import Navbar from '../../components/Navbar/Navbar';
 import { useConfig } from '../../../context/ConfigContext';
 const PasswordResetRequest = () => {
   const [email, setEmail] = useState('');
@@ -27,7 +28,9 @@ const PasswordResetRequest = () => {
       setMessage(error.response.data.message);
     }
   };
-
+useEffect(()  => {
+  handleSubmit()
+}, [])
   return (
     <>
       <Header />

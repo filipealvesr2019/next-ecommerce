@@ -2,12 +2,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import Modal from "@mui/joy/Modal";
-import ModalDialog from "@mui/joy/ModalDialog";
-import Typography from "@mui/joy/Typography";
-
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import SearchIcon from "@mui/icons-material/Search";
@@ -24,10 +18,11 @@ import { useCart } from "../../../context/CartContext";
 import Link from "next/link";
 import { useConfig } from "../../../context/ConfigContext";
 import CircularIndeterminate from "@/components/CircularIndeterminate/CircularIndeterminate";
-import Navbar from "@/components/Navbar/Navbar";
-import Header from "@/components/Header/Header";
+
 import { useAuth } from "../../../context/AuthContext";
-import LoginForm from "@/components/Login/LoginForm";
+import LoginForm from "../../components/Login/LoginForm";
+import Header from "../../components/Header/Header";
+import Navbar from "../../components/Navbar/Navbar";
 const Cart = () => {
   const [getCart, setGetCart] = useState([]);
   const [handleDeleteProduct, setHandleDeleteProduct] = useState(false);
@@ -157,7 +152,7 @@ const Cart = () => {
           console.error("Erro ao remover produto do carrinho:", error);
         });
     },
-    [userId, removeFromCart]
+    [userId, removeFromCart, apiUrl, token]
   );
 
 
@@ -181,7 +176,7 @@ const Cart = () => {
     };
 
     fetchFrete();
-  }, [cep, userId]);
+  }, [cep, userId, apiUrl, token]);
 
   useEffect(() => {
     if (typeof window !== "undefined" && frete && frete.length > 0) {

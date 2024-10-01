@@ -17,7 +17,7 @@ const AllOrderDetails = ({params}) => {
     const { orderID } = params; // Extracting query from URL
 
   const userId = Cookies.get("userId");
-  const { logout, loggedIn } = useAuth();
+  const { loggedIn } = useAuth();
   const [boletos, setBoletos] = useState([]);
   const [pix, setPix] = useState([]);
   const [creditCard, setCreditCard] = useState([]);
@@ -40,7 +40,7 @@ console.log(orderID)
   useEffect(() => {
     setLoading(true); // Define o estado de carregamento como true antes de fazer a chamada à API
 
-    if (loggedIn) {
+    if (loggedIn && userId && token) {
       axios
         .get(`${apiUrl}/api/allOrders/${userId}/${orderID}`,
           {
@@ -60,7 +60,7 @@ console.log(orderID)
           console.error("Erro ao obter os pedidos:", error);
         });
     }
-  }, [loggedIn, userId]);
+  }, [loggedIn, userId, token]);
 
   const handleClick = (payload) => {
     navigator.clipboard.writeText(payload);

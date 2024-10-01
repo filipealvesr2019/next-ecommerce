@@ -21,7 +21,7 @@ const MobileProfile = () => {
     } else {
       setShowButton(false);
     }
-  });
+  }, [logout, loggedIn]);
 
   return (
     <div>

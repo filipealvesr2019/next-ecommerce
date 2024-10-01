@@ -1,5 +1,6 @@
 import CategoriesComponent from "@/components/CategoriesComponent/CategoriesComponent";
 import axios from "axios";
+import React from 'react';
 
 // Função para obter os dados do produto
 const getProductData = async (category, token, apiUrl) => {
@@ -95,7 +96,7 @@ export async function generateMetadata({ params }) {
 }
 
 // Componente da página
-const ProductPage = async ({ params }) => {
+const CategoriesPage = async ({ params }) => {
   const { category } = params;
   const token = "your_auth_token"; // Substitua pelo seu token
   const apiUrl = "https://serveradmin-whhj.onrender.com";
@@ -158,4 +159,4 @@ const ProductPage = async ({ params }) => {
   );
 };
 
-export default ProductPage;
+export default CategoriesPage;

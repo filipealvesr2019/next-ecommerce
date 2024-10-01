@@ -5,14 +5,15 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { Pagination, Stack } from "@mui/material";
 import styles from "./MyOrders.module.css";
-import { useAuth } from "../../../context/AuthContext";
-import { useConfig } from "../../../context/ConfigContext";
+
 import Header from "@/components/Header/Header";
 import Navbar from "@/components/Navbar/Navbar";
 import Link from "next/link";
 import CircularIndeterminate from "@/components/CircularIndeterminate/CircularIndeterminate";
+import { useAuth } from "../../../context/AuthContext";
+import { useConfig } from "../../../context/ConfigContext";
 
-const MyOrders = () => {
+const orders = () => {
   const userId = Cookies.get("userId");
   const { logout, loggedIn } = useAuth();
   const [boletos, setBoletos] = useState([]);
@@ -237,4 +238,4 @@ const MyOrders = () => {
   );
 };
 
-export default MyOrders;
+export default orders;

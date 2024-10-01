@@ -5,14 +5,16 @@ import Cookies from "js-cookie";
 
 import styles from "./Heart.module.css"; // Importa o módulo CSS
 import Link from "next/link";
-import Header from "@/components/Header/Header";
-import Navbar from "@/components/Navbar/Navbar";
-import { useConfig } from "../../../context/ConfigContext";
-import { useAuth } from "../../../context/AuthContext";
-import { Login } from "@mui/icons-material";
-import LoginForm from "@/components/Login/LoginForm";
 
-const Heart = () => {
+
+
+import LoginForm from "../../components/Login/LoginForm";
+import { useAuth } from "../../../context/AuthContext";
+import { useConfig } from "../../../context/ConfigContext";
+import Header from "../../components/Header/Header";
+import Navbar from "../../components/Navbar/Navbar";
+
+const Favoritos = () => {
   const [favorites, setFavorites] = useState([]);
 
   const userId = Cookies.get("userId");
@@ -22,7 +24,7 @@ const Heart = () => {
   const { apiUrl } = useConfig();
 
   useEffect(() => {
-    if (loggedIn) {
+    if (loggedIn && userId && token) {
       axios
         .get(`${apiUrl}/api/favorites/${userId}`, {
           headers: {
@@ -37,7 +39,7 @@ const Heart = () => {
           console.error("Erro ao visualizar produtos favoritos:", error);
         });
     }
-  }, [loggedIn, userId]);
+  }, [loggedIn, userId, token]);
 
   const charLimit = 24;
   // Função para remover acentos
@@ -52,9 +54,9 @@ const Heart = () => {
 
   return (
     <div className={styles.HeartContainer}>
-      <Header />
+ <Header /> 
 
-      <Navbar />
+      <Navbar /> 
       {!loggedIn ? (
         <>
           {" "}
@@ -98,4 +100,4 @@ const Heart = () => {
   );
 };
 
-export default Heart;
+export default Favoritos;

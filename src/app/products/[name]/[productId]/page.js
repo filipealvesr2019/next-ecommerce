@@ -1,3 +1,5 @@
+import React from 'react';
+
 import axios from 'axios';
 import styles from './ProductDetails.module.css'
 import ProductDetailsButton from '@/components/ProductDetailsButton/ProductDetailsButton';
