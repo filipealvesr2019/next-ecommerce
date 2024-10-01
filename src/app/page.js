@@ -7,6 +7,7 @@ import CategoryCarousel from "@/components/CategoryCarousel/CategoryCarousel";
 import Header from "@/components/Header/Header";
 import NewArrivals from "@/components/NewArrivals/NewArrivals";
 import Footer from "@/components/Footer/Footer";
+import Script from "next/script";
  
  
 
@@ -37,6 +38,18 @@ export default function Home() {
   
   return (
     <div>
+
+<Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?idG-S9CN7SC3T9`} // Substitua pelo seu Measurement ID
+      />
+      <Script id="google-analytics-init" strategy="afterInteractive">
+        {`window.dataLayer = window.dataLayer || []; 
+          function gtag(){dataLayer.push(arguments);} 
+          gtag('js', new Date()); 
+          gtag('config', 'G-S9CN7SC3T9', { page_path: window.location.pathname });`}
+      </Script>
  <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
