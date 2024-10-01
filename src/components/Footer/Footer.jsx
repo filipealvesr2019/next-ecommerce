@@ -1,5 +1,5 @@
 import "./Footer.css";
-// import InstagramIcon from "@mui/icons-material/Instagram";
+import InstagramIcon from "@mui/icons-material/Instagram";
 // import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 
 export default function Footer() {
@@ -27,7 +27,7 @@ export default function Footer() {
               {/* <FacebookOutlinedIcon style={{ width: "35px", height: "35px" }} /> */}
             </a>
             <a href="https://www.instagram.com/lojamediewal/"  aria-label="instagram">
-              {/* <InstagramIcon style={{ width: "35px", height: "35px" }} /> */}
+              <InstagramIcon style={{ width: "35px", height: "35px" }} />
             </a>
           </div>
         </div>
