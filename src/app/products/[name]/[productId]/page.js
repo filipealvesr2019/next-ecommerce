@@ -32,7 +32,19 @@ export async function generateMetadata({ params }) {
   } catch (error) {
     console.error('Erro ao obter detalhes do produto:', error);
   }
-  const keywords = productData;
+   // Função para formatar as categorias
+   const formatCategory = (category) => {
+    // Remove os hífens e aplica normalização
+    return category
+      .replace(/-/g, ' ') // Substitui hífens por espaços
+      .normalize('NFD') // Normaliza para separar acentos
+      .replace(/[\u0300-\u036f]/g, ''); // Remove acentos
+  };
+
+  const keywords = productData ? {
+    category: formatCategory(productData.category),
+    subcategory: formatCategory(productData.subcategory),
+  } : {};
 
     const canonicalUrl = `https://mediewal.com.br/products/${name}/${productId}`; // Substitua pela URL canônica correta
 
