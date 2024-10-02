@@ -55,6 +55,9 @@ export async function generateMetadata({ params }) {
       canonical: canonicalUrl, // Adicionando a tag canônica
     },
     keywords: [keywords.category, keywords.subcategory],
+    icons: {
+      icon: "/favicon.svg", // Define o favicon
+    },
   };
 }
 
