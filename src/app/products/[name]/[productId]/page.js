@@ -92,7 +92,11 @@ const jsonLd = {
     "priceCurrency": "BRL",
     "price": productData.variations[0].sizes[0].price, // Preço do primeiro tamanho
     "availability": productData.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+       // "priceValidUntil": "2025-12-31", // Pode ser omitido por enquanto
+
   },
+   // "aggregateRating": { ... }, // Omitir por enquanto
+  // "review": [ ... ], // Omitir por enquanto
 };
   return (
     <div>
