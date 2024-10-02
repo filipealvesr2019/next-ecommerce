@@ -47,7 +47,9 @@ export async function generateMetadata({ params }) {
           canonical: canonicalUrl, // Tag canônica
         },
         keywords: [keywords,'Moda Dri Fit', 'Moda Dry Fit', 'Moda Dry Fit Masculina', 'Moda Dri Fit Masculina'],
-
+        icons: {
+          icon: "/favicon.svg", // Define o favicon
+        },
       };
     
     case "camiseta-performance":
@@ -58,7 +60,9 @@ export async function generateMetadata({ params }) {
           canonical: canonicalUrl,
         },
         keywords: [keywords, 'camiseta masculina', 'camisetas masculinas', 'camisetas'],
-
+        icons: {
+          icon: "/favicon.svg", // Define o favicon
+        },
       };
 
     case "calcao-masculino":
@@ -69,7 +73,9 @@ export async function generateMetadata({ params }) {
           canonical: canonicalUrl,
         },
         keywords: [keywords, 'Calção Masculino', 'Calção', 'Shorts Masculinos'],
-
+        icons: {
+          icon: "/favicon.svg", // Define o favicon
+        },
       };
       case "calcao-dri-fit":
         return {
@@ -79,7 +85,9 @@ export async function generateMetadata({ params }) {
             canonical: canonicalUrl,
           },
           keywords: [keywords, 'Calção Dri Fit', 'Calção Dry Fit'],
-
+          icons: {
+            icon: "/favicon.svg", // Define o favicon
+          },
         };
 
       
@@ -90,7 +98,9 @@ export async function generateMetadata({ params }) {
         alternates: {
           canonical: canonicalUrl,
         },
-        
+        icons: {
+          icon: "/favicon.svg", // Define o favicon
+        },
       };
   }
 }
