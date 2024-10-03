@@ -74,8 +74,13 @@ function RegisterUser({params}) {
       const response = await axios.post(`${apiUrl}/register-user/${token}`, { email, password, role });
       setMessage(response.data.message);
       toast.success("Usuário registrado com sucesso.");
-
+     
     } catch (error) {
+      if(password < 10){
+        toast.error("A senha deve ter, no mínimo, 10 caracteres.");
+
+      }
+
       setError(error.response.data.error);
     }
   };
