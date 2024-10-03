@@ -112,7 +112,7 @@ function RegisterUser({params}) {
           <div>
             <label  className={styles.label}>Password:</label>
             <div style={{ position: "relative" }}>
-              <input type={showPassword ? "text" : "password"} placeholder='exemplo: abC12345@' value={password} onChange={handlePasswordChange} required className={styles.input} />
+              <input type={showPassword ? "text" : "password"} placeholder='exemplo: abCd12345@' value={password} onChange={handlePasswordChange} required className={styles.input} />
               <div onClick={() => setShowPassword(!showPassword)} 
               className={styles.VisibilityIcon}
               >
