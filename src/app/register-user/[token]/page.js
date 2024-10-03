@@ -33,6 +33,7 @@ function RegisterUser({params}) {
   const [containsLowerCase, setContainsLowerCase] = useState(false);
   const [isAddButtonDisabled, setIsAddButtonDisabled] = useState(true);
   const { apiUrl } = useConfig();
+  const [passwordError, setPasswordError] = useState(''); // Novo estado para o erro de senha
 
   useEffect(() => {
     // O token agora está disponível aqui, você pode usá-lo como desejar
@@ -52,6 +53,13 @@ function RegisterUser({params}) {
     const newPassword = e.target.value;
     setPassword(newPassword);
 
+
+      // Verifica se a senha tem pelo menos 10 caracteres
+      if (newPassword.length < 10) {
+        setPasswordError('A senha precisa ter pelo menos 10 caracteres.');
+      } else {
+        setPasswordError('');
+      }
     // Verifica se há algum caractere especial na senha
     const specialCharacterPattern = /[\\;?\-\^\.\!\'\{\:\@\#\$\%\^\&\"\_\(\¨\¨\[\|\|\+\.\=\)_£0\}\*\|<>\`]/;
     setContainsSpecialCharacter(specialCharacterPattern.test(newPassword));
