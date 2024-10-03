@@ -10,6 +10,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import { useAuth } from "../../../context/AuthContext";
 import LoginForm from "@/components/Login/LoginForm";
 import Header from "@/components/Header/Header";
+import Link from "next/link";
 
 
 const MobileProfile = () => {
@@ -38,13 +39,13 @@ const MobileProfile = () => {
           <>
             <nav className={styles.nav}>
               <ul className={styles.ul}>
-                <Link to={"/protected"} className={styles.Link}>
+                <Link href={"/protected"} className={styles.Link}>
                   <li>Minha conta</li>
                 </Link>
-                <Link to={"/orders"}  className={styles.Link}>
+                <Link href={"/orders"}  className={styles.Link}>
                   <li>Historico de Compras</li>
                 </Link>
-                <Link to={"/forgotPassword"} className={styles.Link}>
+                <Link href={"/forgotPassword"} className={styles.Link}>
                   <li>Alterar senha</li>
                 </Link>
               </ul>
