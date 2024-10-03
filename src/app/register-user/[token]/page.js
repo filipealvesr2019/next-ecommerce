@@ -57,7 +57,7 @@ function RegisterUser({params}) {
 
       // Verifica se a senha tem pelo menos 10 caracteres
       if (newPassword.length < 10) {
-        toast.error('A senha precisa ter pelo menos 10 caracteres.'));
+        toast.error('A senha precisa ter pelo menos 10 caracteres.');
 
       } else {
         setPasswordError('');
