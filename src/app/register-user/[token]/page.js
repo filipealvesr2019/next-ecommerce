@@ -16,8 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useConfig } from '../../../../context/ConfigContext';
 import Header from '@/components/Header/Header';
 import Navbar from '@/components/Navbar/Navbar';
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 
 function RegisterUser({params}) {
     const { token } = params; // Extracting query from URL
@@ -34,7 +33,6 @@ function RegisterUser({params}) {
   const [containsLowerCase, setContainsLowerCase] = useState(false);
   const [isAddButtonDisabled, setIsAddButtonDisabled] = useState(true);
   const { apiUrl } = useConfig();
-  const [passwordError, setPasswordError] = useState(''); // Novo estado para o erro de senha
 
   useEffect(() => {
     // O token agora está disponível aqui, você pode usá-lo como desejar
@@ -54,14 +52,7 @@ function RegisterUser({params}) {
     const newPassword = e.target.value;
     setPassword(newPassword);
 
-
-      // Verifica se a senha tem pelo menos 10 caracteres
-      if (newPassword.length < 10) {
-        toast.error('A senha precisa ter pelo menos 10 caracteres.');
-
-      } else {
-        setPasswordError('');
-      }
+  
     // Verifica se há algum caractere especial na senha
     const specialCharacterPattern = /[\\;?\-\^\.\!\'\{\:\@\#\$\%\^\&\"\_\(\¨\¨\[\|\|\+\.\=\)_£0\}\*\|<>\`]/;
     setContainsSpecialCharacter(specialCharacterPattern.test(newPassword));
@@ -80,6 +71,11 @@ function RegisterUser({params}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+        // Verificar se a senha tem menos de 10 caracteres
+  if (password.length < 10) {
+    toast.error("A senha deve ter pelo menos 10 caracteres.");
+    return; // Interrompe o envio do formulário
+  }
     try {
       const response = await axios.post(`${apiUrl}/register-user/${token}`, { email, password, role });
       setMessage(response.data.message);
@@ -89,6 +85,8 @@ function RegisterUser({params}) {
    
 
       setError(error.response.data.error);
+      toast.error(error.response.data.error); // Exibe o erro usando o toast
+
     }
   };
  
@@ -96,8 +94,6 @@ function RegisterUser({params}) {
     <>
       <Header />
       <Navbar />
-
-   
       {/* <Helmet>
         <title>Cadastro de usuário  - Loja Mediewal</title>
         <meta name="description" content="Veja as últimas novidades em nossa loja, com uma seleção de produtos novos." />
