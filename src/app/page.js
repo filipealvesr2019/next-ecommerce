@@ -8,6 +8,7 @@ import Header from "@/components/Header/Header";
 import NewArrivals from "@/components/NewArrivals/NewArrivals";
 import Footer from "@/components/Footer/Footer";
 import Script from "next/script";
+import Head from "next/head";
  
  
 
@@ -38,7 +39,9 @@ export default function Home() {
   
   return (
     <div>
-
+  <Head>
+  <meta name="google-site-verification" content="TV97-a-OPQSLweIpMBr3MJF2Km6HcVNTSx9nWASQtHE" />
+      </Head>
 <Script
         id="google-analytics"
         strategy="afterInteractive"
