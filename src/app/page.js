@@ -37,6 +37,8 @@ export default function Home() {
   return (
     <div>
       <Head>
+      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
         <meta
           name="google-site-verification"
           content="TV97-a-OPQSLweIpMBr3MJF2Km6HcVNTSx9nWASQtHE"
