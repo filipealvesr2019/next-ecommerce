@@ -76,10 +76,7 @@ function RegisterUser({params}) {
       toast.success("Usuário registrado com sucesso.");
      
     } catch (error) {
-      if(password < 10){
-        toast.error("A senha deve ter, no mínimo, 10 caracteres.");
-
-      }
+   
 
       setError(error.response.data.error);
     }
@@ -108,6 +105,7 @@ function RegisterUser({params}) {
         />
       <div className={styles.container}>
         <form onSubmit={handleSubmit} className={styles.formContainer}>
+          <div></div>
           <h2 className={styles.h2}>Cadastro</h2>
           <div className={styles.specs}>
             <label className={styles.label}>Email:</label>
