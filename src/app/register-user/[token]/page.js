@@ -53,7 +53,7 @@ function RegisterUser({params}) {
     setPassword(newPassword);
 
     // Verifica se há algum caractere especial na senha
-    const specialCharacterPattern = /[!@#$%^&*(),.?":{}|<>]/;
+    const specialCharacterPattern = /[;?-^.!'{:@#$%^&"_(¨¨[||/+,.=)_£0}*|<>`]/;
     setContainsSpecialCharacter(specialCharacterPattern.test(newPassword));
 
     const OneNumber = /[0-9]/;
@@ -112,7 +112,7 @@ function RegisterUser({params}) {
           <div>
             <label  className={styles.label}>Password:</label>
             <div style={{ position: "relative" }}>
-              <input type={showPassword ? "text" : "password"} value={password} onChange={handlePasswordChange} required className={styles.input} />
+              <input type={showPassword ? "text" : "password"} placeholder='exemplo: abC12345@' value={password} onChange={handlePasswordChange} required className={styles.input} />
               <div onClick={() => setShowPassword(!showPassword)} 
               className={styles.VisibilityIcon}
               >
