@@ -14,7 +14,7 @@ export const metadata = {
   description:
     "Somos a Mediewal, uma marca de roupas masculinas criada para quem quer se vestir bem e reinar no estilo. Inspirada no conceito de elegância  e confiança.", // Descrição da página
   icons: {
-    icon: "/favicon.svg", // Define o favicon
+    icon: "/favicon.ico", // Define o favicon
   },
   keywords: ["Loja Mediewal", "Moda masculina", "Dry Fit"],
 };
@@ -37,8 +37,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-
+        
         <meta
           name="google-site-verification"
           content="TV97-a-OPQSLweIpMBr3MJF2Km6HcVNTSx9nWASQtHE"
