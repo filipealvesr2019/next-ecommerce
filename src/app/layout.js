@@ -1,7 +1,7 @@
 // layout.js (No "use client", server component)
 import "./globals.css";
 import Providers from "../../providers/providers";
-import Head from "next/head";
+
 
 export default function RootLayout({ children }) {
   return (
