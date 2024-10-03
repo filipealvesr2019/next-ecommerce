@@ -16,7 +16,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { useConfig } from '../../../../context/ConfigContext';
 import Header from '@/components/Header/Header';
 import Navbar from '@/components/Navbar/Navbar';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function RegisterUser({params}) {
     const { token } = params; // Extracting query from URL
@@ -56,7 +57,8 @@ function RegisterUser({params}) {
 
       // Verifica se a senha tem pelo menos 10 caracteres
       if (newPassword.length < 10) {
-        setPasswordError('A senha precisa ter pelo menos 10 caracteres.');
+        toast.error('A senha precisa ter pelo menos 10 caracteres.'));
+
       } else {
         setPasswordError('');
       }
@@ -94,6 +96,8 @@ function RegisterUser({params}) {
     <>
       <Header />
       <Navbar />
+
+   
       {/* <Helmet>
         <title>Cadastro de usuário  - Loja Mediewal</title>
         <meta name="description" content="Veja as últimas novidades em nossa loja, com uma seleção de produtos novos." />
