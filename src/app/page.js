@@ -36,13 +36,7 @@ export default function Home() {
 
   return (
     <div>
-      <Head>
-        
-        <meta
-          name="google-site-verification"
-          content="TV97-a-OPQSLweIpMBr3MJF2Km6HcVNTSx9nWASQtHE"
-        />
-      </Head>
+     
       <Script
         id="google-analytics"
         strategy="afterInteractive"
