@@ -6,13 +6,15 @@ import Head from "next/head";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-       <Head>
+      <head>
+
         
         <meta
           name="google-site-verification"
           content="TV97-a-OPQSLweIpMBr3MJF2Km6HcVNTSx9nWASQtHE"
         />
-      </Head>
+     </head>
+
       <body>
         <Providers>{children}</Providers>
       </body>
