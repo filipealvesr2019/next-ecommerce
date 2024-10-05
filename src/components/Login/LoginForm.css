@@ -59,7 +59,9 @@
     width: 30vw;
     padding: 1rem;
   }
-  
+  .loginStyle{
+    height: 80vh;
+  }
   
 }
 
@@ -74,6 +76,10 @@
   .loginButton {
     width: 25vw;
     padding: 0.8rem;
+  }
+
+  .loginStyle{
+    height: 90vh;
   }
   
 }
