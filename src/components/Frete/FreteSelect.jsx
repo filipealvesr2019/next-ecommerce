@@ -115,7 +115,7 @@ const FreteSelect = () => {
           ) : (
             frete && (
               <div className={styles.div}>
-                {frete.map((item, index) => (
+                {frete?.map((item, index) => (
                   <div key={index} className={styles.freteItemContainer}>
                     <div className={styles.interContainer}>
                       <img
