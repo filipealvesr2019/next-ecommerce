@@ -237,7 +237,7 @@ const SignUpForm = () => {
         style={{ display: "flex", flexDirection: "column", marginTop: "15rem" }}
         className={styles.formContainer}
       >
-        <h1 className={styles.dados}>DADOS PESSOAIS</h1>
+        <h1 className={styles.dados}>CADASTRAR DADOS</h1>
 
         <div className={styles.childContainerA}>
 
