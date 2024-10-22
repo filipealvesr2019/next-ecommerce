@@ -145,6 +145,8 @@ const Pay = () => {
 
   const handleCreditCardPaymentLink = async () => {
     setCreditCardWithPaymentLinkLoading(true);
+    console.log("Iniciando o pagamento com cartão...");
+
   
     try {
       const response = await fetch(`${apiUrl}/api/crediCardWithPaymentLink/${userId}`, {
@@ -273,7 +275,7 @@ const Pay = () => {
       <div style={{ textAlign: "center", marginTop: "10rem" }}>
         {showContent ? (
           <div>
-            {pixLoading || creditCardLoading || boletoLoading ? (
+            {pixLoading || creditCardWithPaymentLinkLoading || boletoLoading ? (
               <>
                 <div
                   style={{
