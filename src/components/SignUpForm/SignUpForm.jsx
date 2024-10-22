@@ -244,7 +244,7 @@ const SignUpForm = () => {
 
           <div className={styles.child}>
             <label className={styles.label}>
-              Nome Completo:
+              Nome Completo(obrigatório):
 
             </label>
             <input
@@ -260,7 +260,7 @@ const SignUpForm = () => {
 
           <div className={styles.child}>
             <label className={styles.label}>
-              CPF:
+              CPF(obrigatório):
 
             </label>
             <input
@@ -276,7 +276,7 @@ const SignUpForm = () => {
 
           <div className={styles.child}>
             <label className={styles.label}>
-              Email:
+              Email(obrigatório):
 
             </label >
             <input
@@ -296,7 +296,7 @@ const SignUpForm = () => {
           <div className={styles.child}>
 
             <label className={styles.label}>
-              Telefone:
+              Telefone(obrigatório):
 
             </label>
             <input
@@ -327,7 +327,7 @@ const SignUpForm = () => {
           <div className={styles.child}>
 
             <label className={styles.label}>
-              CEP:
+              CEP(obrigatório):
 
             </label>
             <input
@@ -362,7 +362,7 @@ const SignUpForm = () => {
 
               <div className={styles.child}>
                 <label className={styles.label}>
-                  Address:
+                  Address(obrigatório):
 
                 </label>
 
@@ -379,7 +379,7 @@ const SignUpForm = () => {
 
               <div className={styles.child}>
                 <label className={styles.label}>
-                  Número do endereço:
+                  Número do endereço(obrigatório):
 
                 </label>
 
@@ -403,7 +403,7 @@ const SignUpForm = () => {
 
               <div className={styles.child}>
                 <label className={styles.label}>
-                  Complemento:
+                  Complemento(opcional):
 
                 </label>
                 <input
@@ -422,7 +422,7 @@ const SignUpForm = () => {
               <div className={styles.child}>
 
                 <label className={styles.label}>
-                  Bairro:
+                  Bairro(obrigatório):
 
                 </label>
                 <input
@@ -442,7 +442,7 @@ const SignUpForm = () => {
               <div className={styles.child}>
 
                 <label className={styles.label}>
-                  Cidade:
+                  Cidade(obrigatório):
 
                 </label>
                 <input
@@ -465,7 +465,7 @@ const SignUpForm = () => {
 
               <div className={styles.child}>
                 <label className={styles.label}>
-                  Estado:
+                  Estado(obrigatório):
 
                 </label>
                 <input
