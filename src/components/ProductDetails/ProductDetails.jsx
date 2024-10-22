@@ -28,6 +28,7 @@ import Navbar from "../Navbar/Navbar";
 import ZoomInComponent from '../ZoomIn/ZoomInComponent'
 import CartSidebar from "../cartSidebar/CartSidebar";
 import { useSwipeable } from "react-swipeable";
+import Link from "next/link";
 const ProductDetails = ({productId, name}) => {
   const [product, setProduct] = useState({ variations: [] });
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
