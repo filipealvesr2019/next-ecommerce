@@ -51,9 +51,7 @@ const ProductDetails = ({productId, name}) => {
   const [selectedColorId, setSelectedColorId] = useState("");
   const [selectedSizeId, setSelectedSizeId] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-  const auth = useAuth();
-  console.log('Auth Context:', auth); // Log do contexto para ver o que está retornando
-  const { loggedIn = false } = auth || {};  
+  const loggedIn = useAuth() ?? {};
   const [changeUrlLink, setChangeUrlLink] = useState(0);
   const { apiUrl } = useConfig();
 
