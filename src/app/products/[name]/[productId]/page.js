@@ -4,6 +4,7 @@ import axios from 'axios';
 import styles from './ProductDetails.module.css'
 import ProductDetailsButton from '@/components/ProductDetailsButton/ProductDetailsButton';
 import ProductDetails from '@/components/ProductDetails/ProductDetails';
+import { AuthProvider } from '../../../../../context/AuthContext';
 // Função para obter os dados do produto
 const getProductData = async (name, productId, token, apiUrl) => {
   const encodedProductName = encodeURIComponent(name);
@@ -102,6 +103,8 @@ const jsonLd = {
   // "review": [ ... ], // Omitir por enquanto
 };
   return (
+    <AuthProvider>
+
     <div>
       {productData ? (
         <>
@@ -115,6 +118,8 @@ const jsonLd = {
         <h1>Produto não encontrado</h1>
       )}
     </div>
+
+    </AuthProvider>
   );
 };
 
