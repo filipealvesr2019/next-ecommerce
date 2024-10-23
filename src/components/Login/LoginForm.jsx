@@ -5,7 +5,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 import { useAuth } from "../../../context/AuthContext";
-import ProfileDetails from "../ProfileDetails/ProfileDetails";
+import ProfileDetails from "../../app/ProfileDetails/ProfileDetails";
 import Header from "../Header/Header";
 import Navbar from "../Navbar/Navbar";
 import Link from "next/link";

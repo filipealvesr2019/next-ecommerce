@@ -15,7 +15,7 @@ const UpdateForm = () => {
   const userId = Cookies.get("userId"); // Obtenha o token do cookie
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
-    userId: userId,
+    userId: userId || '',
     name: "",
     cpfCnpj: "",
     email: "",
