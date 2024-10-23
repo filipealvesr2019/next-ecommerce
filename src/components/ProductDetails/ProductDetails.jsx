@@ -19,7 +19,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CloseIcon from "@mui/icons-material/Close";
 
-import { useAuth } from "../../../context/AuthContext";
+// import { useAuth } from "../../../context/AuthContext";
 import FreteSelect from "../Frete/FreteSelect";
 import { useCart } from "../../../context/CartContext";
 import { useConfig } from "../../../context/ConfigContext";
@@ -51,7 +51,7 @@ const ProductDetails = ({productId, name}) => {
   const [selectedColorId, setSelectedColorId] = useState("");
   const [selectedSizeId, setSelectedSizeId] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-  const { loggedIn = false } = useAuth() ?? {};
+// const { loggedIn = false } = useAuth() ?? {};
   const [changeUrlLink, setChangeUrlLink] = useState(0);
   const { apiUrl } = useConfig();
 
@@ -300,12 +300,12 @@ const ProductDetails = ({productId, name}) => {
 
         handleClickOpenCartModal();
       } catch (error) {
-        if (loggedIn === false) {
-          toast.error("Precisa fazer login pra adicionar algo ao carrinho!");
-        } else {
-          console.error("Erro ao adicionar produto ao carrinho:", error);
-          toast.error("Produto com essa cor e tamanho indisponível.");
-        }
+        // if (loggedIn === false) {
+        //   toast.error("Precisa fazer login pra adicionar algo ao carrinho!");
+        // } else {
+        //   console.error("Erro ao adicionar produto ao carrinho:", error);
+        //   toast.error("Produto com essa cor e tamanho indisponível.");
+        // }
       }
     } else {
       toast.error("Por favor, selecione uma cor e um tamanho.");

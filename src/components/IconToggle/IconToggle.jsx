@@ -9,7 +9,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 const IconToggle = ({ productId, isFavorite }) => {
   const [active, setActive] = useState(isFavorite ?? false);
   const userId = Cookies.get("userId");
-  const { logout, loggedIn } = useAuth();
+  const { loggedIn } = useAuth();
   const credentials = Cookies.get("role");
   const token = Cookies.get("token");
   const { apiUrl } = useConfig();

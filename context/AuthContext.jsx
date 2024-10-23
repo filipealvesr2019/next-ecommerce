@@ -1,103 +1,85 @@
 "use client"
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+
 import { useConfig } from './ConfigContext';
 
-// Definindo o tipo inicial do contexto
-const initialAuthContext = {
+const AuthContext = createContext({
   loggedIn: false,
   isCustomer: false,
   userId: null,
-  login: async () => {},
+  login: () => {},
   logout: () => {},
   remainingAttempts: ''
-};
-
-const AuthContext = createContext(initialAuthContext);
+});
 
 export const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [isCustomer, setIsCustomer] = useState(false);
-  const [userId, setUserId] = useState(null);
-  const [remainingAttempts, setRemainingAttempts] = useState('');
+  const [isCustomer, setIsCustomer] = useState(false); // Renomeado para isCustomer
+  const [userId, setUserId] = useState(null); // Adicionado userId
+  const [remainingAttempts, setRemainingAttempts] = useState(''); // Inicialize como null ou 0
   const { apiUrl } = useConfig();
 
   useEffect(() => {
-    try {
-      const storedToken = Cookies.get('token');
-      const storedRole = Cookies.get('role');
-      const storedUserId = Cookies.get('userId');
-      
-      if (storedToken && storedRole && storedUserId) {
-        setLoggedIn(true);
-        setIsCustomer(storedRole === 'customer');
-        setUserId(storedUserId);
-      }
-    } catch (error) {
-      console.error('Erro ao recuperar dados de autenticação:', error);
-    }
+    const storedToken = Cookies.get('token');
+    const storedRole = Cookies.get('role');
+    const storedUserId = Cookies.get('userId'); // Obtendo o ID do usuário
+    setLoggedIn(Boolean(storedToken));
+    setIsCustomer(storedRole === 'customer');
+    setUserId(storedUserId); // Definindo o ID do usuário
   }, []);
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post(`${apiUrl}/loginCustumer`, {
+      const response = await axios.post(`${apiUrl}/loginCustumer` , {
         email,
         password,
       });
   
       const { token, user } = response.data;
-      
-      if (!token || !user) {
-        throw new Error('Dados de resposta inválidos');
-      }
-
-      const { role, _id, remainingAttempts } = user;
+      const { role, _id, remainingAttempts } = user; // Inclua remainingAttempts
   
       setLoggedIn(true);
       setIsCustomer(role === 'customer');
       setUserId(_id);
-      setRemainingAttempts(remainingAttempts);
+      setRemainingAttempts(remainingAttempts); // Atualize remainingAttempts no estado
   
       Cookies.set('token', token);
       Cookies.set('role', role);
       Cookies.set('userId', _id);
+     
+  
 
-      return true;
     } catch (error) {
-      if (error.response?.status === 401) {
+      if (error.response && error.response.status === 401) {
         const { remainingAttempts } = error.response.data;
-        setRemainingAttempts(remainingAttempts);
+        setRemainingAttempts(remainingAttempts); // Atualize aqui em caso de erro
         toast.error('Erro, email ou senha inválidos!', { position: 'top-center' });
       } else {
-        console.error('Erro na solicitação de login:', error);
-        toast.error('Erro ao realizar login. Tente novamente.', { position: 'top-center' });
+        console.error('Erro na solicitação de login', error);
       }
-      return false;
     }
   };
   
   const logout = () => {
-    try {
-      ['token', 'role', 'userId'].forEach(cookie => Cookies.remove(cookie));
-      
-      setLoggedIn(false);
-      setIsCustomer(false);
-      setUserId(null);
-      setRemainingAttempts('');
-    } catch (error) {
-      console.error('Erro ao fazer logout:', error);
-      toast.error('Erro ao fazer logout', { position: 'top-center' });
-    }
+    Cookies.remove('token');
+    Cookies.remove('role');
+    Cookies.remove('userId'); // Removendo o ID do usuário dos cookies ao fazer logout
+    setLoggedIn(false);
+    setIsCustomer(false);
+    setUserId(null); // Resetando o ID do usuário ao fazer logout
+    // navigate('/login');
+
   };
 
   const values = {
     loggedIn,
     isCustomer,
-    userId,
+    userId, // Incluindo userId nos valores do contexto
     login,
     logout,
     remainingAttempts
@@ -106,10 +88,4 @@ export const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth deve ser usado dentro de um AuthProvider');
-  }
-  return context;
-};
+export const useAuth = () => useContext(AuthContext);
