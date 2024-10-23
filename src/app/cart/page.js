@@ -259,7 +259,7 @@ const Cart = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("userId do handlePixPayment",userId)  
+      console.log("userId do api/frete",userId)  
       setFrete(responseGet.data);
     } catch (error) {
       console.error("Error fetching data:", error);
