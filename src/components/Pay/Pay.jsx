@@ -125,8 +125,9 @@ console.log("userId do handlePixPayment",userId)
       );
       const data = await response.json();
       setBoletoLoading(false);
-      console.log(data);
       setBoleto(data);
+      console.log("boleto resposta",data);
+
       // // Redirecionar para a URL de pagamento PIX
       window.location.href = data.bankSlipUrl;
 
@@ -158,11 +159,11 @@ console.log("userId do handlePixPayment",userId)
       });
       const data = await response.json();
       setCreditCardWithPaymentLinkLoading(false);
-      console.log(data);
   
       // Update the state with the response data
       setCreditCardWithPaymentLink(data);
-  
+      console.log("crediCard resposta",data);
+
       // Redirect to the payment link
       window.location.href = data.invoiceUrl;
       
