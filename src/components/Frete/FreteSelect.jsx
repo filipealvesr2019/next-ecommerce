@@ -15,7 +15,9 @@ const FreteSelect = () => {
   const token = Cookies.get("token");
   const userId = Cookies.get("userId");
   const { apiUrl } = useConfig();
-  const { loggedIn = false } = useAuth() ?? {};
+  const auth = useAuth();
+  console.log('Auth Context:', auth); // Log do contexto para ver o que está retornando
+  const { loggedIn = false } = auth || {};
 
   // Check for localStorage in useEffect (runs only on the client)
   useEffect(() => {
