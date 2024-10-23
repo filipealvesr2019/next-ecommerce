@@ -55,8 +55,6 @@ const ProductDetails = ({productId, name}) => {
   const [changeUrlLink, setChangeUrlLink] = useState(0);
   const { apiUrl } = useConfig();
 
-  console.log("Product ID:", productId);
-  console.log("Product Name:", name);
 
   const hendleButtonDisabled = () => {
     setIsButtonDisabled(true);
