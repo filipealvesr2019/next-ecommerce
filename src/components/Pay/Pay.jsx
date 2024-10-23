@@ -78,8 +78,8 @@ const Pay = () => {
   // pagar com pix sem checkout transparente
   const handlePixPayment = async () => {
     setPixLoading(true); // Ativar o loader
-
-    try {
+console.log("userId do handlePixPayment",userId)  
+  try {
       const response = await fetch(
         `${apiUrl}/api/pixQRcodeStatico/${userId}`,
         {
