@@ -15,7 +15,7 @@ const FreteSelect = () => {
   const token = Cookies.get("token");
   const userId = Cookies.get("userId");
   const { apiUrl } = useConfig();
-  const { loggedIn } = useAuth();
+  const { loggedIn = false } = useAuth() || {}; // Default to false if undefined
 
   // Check for localStorage in useEffect (runs only on the client)
   useEffect(() => {
