@@ -51,7 +51,7 @@ const ProductDetails = ({productId, name}) => {
   const [selectedColorId, setSelectedColorId] = useState("");
   const [selectedSizeId, setSelectedSizeId] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-  const { loggedIn = false } = useAuth() || {}; // Provide default value if it's undefined
+  const { loggedIn = false } = useAuth() ?? {};
   const [changeUrlLink, setChangeUrlLink] = useState(0);
   const { apiUrl } = useConfig();
 
