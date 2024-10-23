@@ -1,0 +1,20 @@
+.Container{
+    position: relative;
+}
+.ChatIcon{
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+
+}
+
+  
+.admin{
+    background-color: #5679f4;
+    color: white;
+    
+  }
+  .user{
+    background-color: #F6F8FD;
+    color: #2e3655;
+  }

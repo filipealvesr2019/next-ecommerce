@@ -1,0 +1,50 @@
+.Container {
+    display: flex;
+    justify-content: space-between;
+width: 70vw;
+    height: 500px;
+   
+    margin-top: 10rem;
+  }
+  .UsersList{
+    background-color: #fff;
+    border-radius: 10px;
+    width: 20vw;
+
+  }
+
+  .messageContainer{
+    border-radius: 100px;
+    width: 40vw;
+    
+  }
+  .messageContent{
+    background-color: #fff;
+    border-radius: 10px;
+
+
+   padding: 1rem;
+
+  }
+  
+  .admin{
+    background-color: #5679f4;
+    color: white;
+    
+  }
+  .user{
+    background-color: #F6F8FD;
+    color: #2e3655;
+  }
+
+  .span {
+    background-color: #5679f4;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px; /* Largura fixa */
+    height: 40px; /* Altura fixa */
+    display: flex; /* Adicionado para centralizar texto se necessário */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+}
