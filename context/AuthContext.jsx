@@ -8,7 +8,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { useConfig } from './ConfigContext';
 
-const AuthContext = createContext();
+const AuthContext = createContext({
+  loggedIn: false,
+  isCustomer: false,
+  userId: null,
+  login: () => {},
+  logout: () => {},
+  remainingAttempts: ''
+});
 
 export const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);

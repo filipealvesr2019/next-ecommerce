@@ -20,7 +20,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CloseIcon from "@mui/icons-material/Close";
 
 import { useAuth } from "../../../context/AuthContext";
-// import FreteSelect from "../Frete/FreteSelect";
+import FreteSelect from "../Frete/FreteSelect";
 import { useCart } from "../../../context/CartContext";
 import { useConfig } from "../../../context/ConfigContext";
 import Header from "../Header/Header";
@@ -886,7 +886,7 @@ const ProductDetails = ({productId, name}) => {
                           {product.description}
                         </span>
                       </div>
-                      {/* <FreteSelect /> */}
+                      <FreteSelect />
                     </div>
                   </div>
                 </div>
