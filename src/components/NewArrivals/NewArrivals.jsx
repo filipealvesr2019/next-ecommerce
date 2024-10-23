@@ -19,7 +19,7 @@ const NewArrivals = ({ onNewArrivalsUpdate }) => {
   const [newArrivals, setNewArrivals] = useState([]);
   const [totalProducts, setTotalProducts] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const { logout, loggedIn } = useAuth();
+  
   const [loading, setLoading] = useState(true); // Inicialmente true para exibir o spinner
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   const { apiUrl } = useConfig();
